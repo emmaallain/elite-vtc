@@ -307,6 +307,13 @@ main {
   height: 1rem;
 }
 
+.service-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  color: var(--copper-soft);
+}
+
 .vehicle-carousel {
   margin-top: 0.35rem;
   position: relative;
@@ -422,12 +429,36 @@ main {
 
 .badge {
   margin-top: 0.35rem;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   width: fit-content;
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.2rem 0.65rem;
   font-size: 0.8rem;
+}
+
+.badge-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.badge-available .badge-dot {
+  background-color: #16854f;
+}
+
+.badge-unavailable .badge-dot {
+  background-color: #d32f2f;
+}
+
+.driver-phone {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0.15rem 0;
 }
 
 .feature-list {
@@ -439,17 +470,95 @@ main {
 
 .pricing-card {
   align-items: flex-start;
+  justify-content: space-between;
+}
+
+.price-box {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  background: rgba(216, 173, 136, 0.08);
+  margin-left: auto;
+}
+
+:root[data-theme='dark'] .price-box {
+  background: rgba(209, 156, 116, 0.08);
 }
 
 .price-value {
   font-size: 1.8rem;
-  color: var(--copper-soft);
-  font-family: var(--font-display);
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+:root[data-theme='dark'] .price-value {
+  color: #fff;
+}
+
+.price-unit {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 .contact-panel {
   display: grid;
   gap: 1rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.contact-item {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.contact-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.contact-item-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.contact-item p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  color: var(--copper-soft);
+}
+
+.contact-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .contact-card {

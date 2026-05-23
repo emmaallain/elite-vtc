@@ -9,6 +9,7 @@ export const drivers = [
     },
     languages: { fr: ['Francais', 'English'], en: ['French', 'English'] },
     availability: true,
+    phone: '+33 6 12 34 56 78',
     photo: '/photos/drivers/yannick.jpg',
   },
   {
@@ -21,6 +22,7 @@ export const drivers = [
     },
     languages: { fr: ['Francais', 'English', 'Allemand'], en: ['French', 'English', 'German'] },
     availability: true,
+    phone: '+33 6 98 76 54 32',
     photo: '/photos/drivers/christelle.jpg',
   },
 ]

@@ -9,7 +9,6 @@ export function VehiclesPage() {
   return (
     <section className="panel">
       <SectionHeading
-        eyebrow="Premium Fleet"
         title={t.sections.vehicles}
         subtitle={t.pages.vehiclesIntro}
       />

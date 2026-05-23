@@ -5,14 +5,13 @@ import { LanguageSwitcher } from './LanguageSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { WhatsAppFloatingButton } from './WhatsAppFloatingButton'
 
-const navKeys = ['home', 'drivers', 'vehicles', 'services', 'pricing', 'contact']
+const navKeys = ['home', 'drivers', 'vehicles', 'services', 'contact']
 
 const navPaths = {
   home: '/',
   drivers: '/chauffeurs',
   vehicles: '/vehicules',
   services: '/services',
-  pricing: '/tarifs',
   contact: '/contact',
 }
 
@@ -26,7 +25,6 @@ export function Layout() {
       <header className="site-header">
         <div className="header-top">
           <div className="brand-block">
-            <p className="brand-kicker">Elite Private Mobility</p>
             <h1 className="brand-name">{SITE_CONFIG.brandName}</h1>
           </div>
 

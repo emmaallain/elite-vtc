@@ -29,10 +29,14 @@ export function PricingPage() {
       <div className="card-grid">
         {pricing.map((item) => (
           <article key={item.id} className="card pricing-card">
-            <h3>{item.title[language]}</h3>
-            <p className="price-value">{item.amount}</p>
-            <p>{unitLabelByLanguage[language][item.unit]}</p>
-            <p>{item.note[language]}</p>
+            <div>
+              <h3>{item.title[language]}</h3>
+              <p>{item.note[language]}</p>
+            </div>
+            <div className="price-box">
+              <p className="price-value">{item.amount}</p>
+              <p className="price-unit">{unitLabelByLanguage[language][item.unit]}</p>
+            </div>
           </article>
         ))}
       </div>

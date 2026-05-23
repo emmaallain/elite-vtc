@@ -8,7 +8,6 @@ export function HomePage() {
   return (
     <>
       <section className="hero-panel">
-        <p className="hero-eyebrow">{t.hero.eyebrow}</p>
         <h2 className="hero-title">{t.hero.title}</h2>
         <p className="hero-subtitle">{t.hero.subtitle}</p>
         <div className="hero-actions">

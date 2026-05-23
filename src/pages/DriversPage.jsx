@@ -8,7 +8,6 @@ export function DriversPage() {
   return (
     <section className="panel">
       <SectionHeading
-        eyebrow="Elite VTC"
         title={t.sections.drivers}
         subtitle={t.pages.driversIntro}
       />
@@ -23,7 +22,9 @@ export function DriversPage() {
             <p>{driver.experience[language]}</p>
             <p>{driver.specialty[language]}</p>
             <p>{driver.languages[language].join(' • ')}</p>
-            <p className="badge">
+            <p className="driver-phone">{driver.phone}</p>
+            <p className={driver.availability ? 'badge badge-available' : 'badge badge-unavailable'}>
+              <span className="badge-dot"></span>
               {driver.availability ? t.common.available : t.common.unavailable}
             </p>
           </article>

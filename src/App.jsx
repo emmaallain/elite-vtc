@@ -4,9 +4,8 @@ import { BookingPage } from './pages/BookingPage'
 import { ContactPage } from './pages/ContactPage'
 import { DriversPage } from './pages/DriversPage'
 import { HomePage } from './pages/HomePage'
-import { PricingPage } from './pages/PricingPage'
+import { ServicesAndPricingPage } from './pages/ServicesAndPricingPage'
 import { QuotePage } from './pages/QuotePage'
-import { ServicesPage } from './pages/ServicesPage'
 import { VehiclesPage } from './pages/VehiclesPage'
 import './App.css'
 
@@ -17,8 +16,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/chauffeurs" element={<DriversPage />} />
         <Route path="/vehicules" element={<VehiclesPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/tarifs" element={<PricingPage />} />
+        <Route path="/services" element={<ServicesAndPricingPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/reservation" element={<BookingPage />} />
         <Route path="/devis" element={<QuotePage />} />
