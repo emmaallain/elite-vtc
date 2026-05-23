@@ -3,7 +3,7 @@ import { SITE_CONFIG } from '../config/siteConfig'
 import { useTranslation } from '../hooks/useTranslation'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
-import { WhatsAppFloatingButton } from './WhatsAppFloatingButton'
+import { FloatingChatbot } from './FloatingChatbot'
 
 const navKeys = ['home', 'drivers', 'vehicles', 'services', 'contact']
 
@@ -61,7 +61,7 @@ export function Layout() {
         </footer>
       ) : null}
 
-      <WhatsAppFloatingButton />
+      <FloatingChatbot />
     </>
   )
 }

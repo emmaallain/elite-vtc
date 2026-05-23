@@ -1,7 +1,20 @@
 import { getMediaSource } from '../utils/media'
 
-const vehicleExterior = getMediaSource('vehicles/v-class-exterior.jpg', { width: 1400 })
-const vehicleInterior = getMediaSource('vehicles/v-class-interior.jpg', { width: 1400 })
+const vehicleExteriorSource =
+  import.meta.env.VITE_VEHICLE_EXTERIOR_IMAGE?.trim() || 'vehicles/v-class-exterior.jpg'
+const vehicleInteriorSource =
+  import.meta.env.VITE_VEHICLE_INTERIOR_IMAGE?.trim() || 'vehicles/v-class-interior.jpg'
+
+const vehicleExterior = getMediaSource(vehicleExteriorSource, {
+  cloudinaryPath: vehicleExteriorSource,
+  localPath: 'vehicles/v-class-exterior.jpg',
+  width: 1400,
+})
+const vehicleInterior = getMediaSource(vehicleInteriorSource, {
+  cloudinaryPath: vehicleInteriorSource,
+  localPath: 'vehicles/v-class-interior.jpg',
+  width: 1400,
+})
 
 export const vehicles = [
   {

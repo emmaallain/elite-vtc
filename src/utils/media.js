@@ -8,7 +8,17 @@ const CLOUDINARY_TRANSFORMS =
 const normalizeFolder = (folder) => folder?.replace(/^\/+|\/+$/g, '')
 
 export function getMediaSource(relativePath, options = {}) {
-  const localSrc = `${MEDIA_BASE}/${relativePath}`
+  const localPath = options.localPath || relativePath
+  const cloudinaryPath = options.cloudinaryPath || relativePath
+  const localSrc = `${MEDIA_BASE}/${localPath}`
+  const isFullUrl = /^https?:\/\//i.test(cloudinaryPath)
+
+  if (isFullUrl) {
+    return {
+      src: cloudinaryPath,
+      fallbackSrc: localSrc,
+    }
+  }
 
   if (!CLOUDINARY_CLOUD_NAME) {
     return {
@@ -18,7 +28,13 @@ export function getMediaSource(relativePath, options = {}) {
   }
 
   const folder = normalizeFolder(CLOUDINARY_FOLDER)
-  const uploadPath = folder ? `${folder}/${relativePath}` : relativePath
+  const normalizedCloudinaryPath = cloudinaryPath.replace(/^\/+/, '')
+  const isAbsoluteCloudinaryPath = cloudinaryPath.startsWith('/')
+  const uploadPath = isAbsoluteCloudinaryPath
+    ? normalizedCloudinaryPath
+    : folder
+      ? `${folder}/${normalizedCloudinaryPath}`
+      : normalizedCloudinaryPath
   const widthTransform = options.width ? `,w_${options.width}` : ''
   const transforms = `${CLOUDINARY_TRANSFORMS}${widthTransform}`
 

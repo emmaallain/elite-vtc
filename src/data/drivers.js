@@ -1,7 +1,20 @@
 import { getMediaSource } from '../utils/media'
 
-const yannickPhoto = getMediaSource('drivers/yannick.jpg', { width: 900 })
-const christellePhoto = getMediaSource('drivers/christelle.jpg', { width: 900 })
+const yannickImageSource =
+  import.meta.env.VITE_DRIVER_YANNICK_IMAGE?.trim() || 'drivers/yannick.jpg'
+const christelleImageSource =
+  import.meta.env.VITE_DRIVER_CHRISTELLE_IMAGE?.trim() || 'drivers/christelle.jpg'
+
+const yannickPhoto = getMediaSource(yannickImageSource, {
+  cloudinaryPath: yannickImageSource,
+  localPath: 'drivers/yannick.jpg',
+  width: 900,
+})
+const christellePhoto = getMediaSource(christelleImageSource, {
+  cloudinaryPath: christelleImageSource,
+  localPath: 'drivers/christelle.jpg',
+  width: 900,
+})
 
 export const drivers = [
   {

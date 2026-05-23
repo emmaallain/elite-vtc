@@ -95,12 +95,13 @@ export function ContactPage() {
         <a className="cta cta-secondary contact-quick-link" href={phoneHref}>
           Appeler
         </a>
-        <a className="cta cta-secondary contact-quick-link" href={emailHref}>
-          Envoyer un email
-        </a>
         <a className="cta cta-primary whatsapp-cta" href={createWhatsAppUrl()} target="_blank" rel="noreferrer">
           {t.common.whatsappNow}
         </a>
+        <a className="cta cta-secondary contact-quick-link" href={emailHref}>
+          Envoyer un email
+        </a>
+        
       </div>
     </section>
   )
