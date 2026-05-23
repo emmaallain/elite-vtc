@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Mercedes E-Class exterior</title>
+  <desc id="desc">Illustration premium de la berline Mercedes E-Class.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#101215"/>
+      <stop offset="55%" stop-color="#1f232a"/>
+      <stop offset="100%" stop-color="#2f2522"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#30343b"/>
+      <stop offset="50%" stop-color="#60656f"/>
+      <stop offset="100%" stop-color="#20242b"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d7e5ef" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#8fa7ba" stop-opacity="0.45"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#d8ad88" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#d8ad88" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1400" height="900" rx="40" fill="url(#bg)"/>
+  <rect width="1400" height="900" rx="40" fill="url(#spot)"/>
+  <g transform="translate(115 205)">
+    <path d="M210 340c0-85 55-145 149-145h414c86 0 155 60 155 145v84H210z" fill="url(#body)"/>
+    <path d="M286 195c23-50 66-86 129-86h235c65 0 111 35 138 86l28 60H258z" fill="url(#body)"/>
+    <rect x="323" y="122" width="214" height="100" rx="22" fill="url(#glass)"/>
+    <rect x="553" y="122" width="214" height="100" rx="22" fill="url(#glass)"/>
+    <rect x="245" y="136" width="65" height="86" rx="18" fill="#20242b"/>
+    <rect x="783" y="136" width="68" height="86" rx="18" fill="#20242b"/>
+    <circle cx="346" cy="508" r="106" fill="#0b0d10"/>
+    <circle cx="346" cy="508" r="68" fill="#5d636d"/>
+    <circle cx="744" cy="508" r="106" fill="#0b0d10"/>
+    <circle cx="744" cy="508" r="68" fill="#5d636d"/>
+    <circle cx="346" cy="508" r="36" fill="#d8ad88"/>
+    <circle cx="744" cy="508" r="36" fill="#d8ad88"/>
+    <rect x="282" y="318" width="516" height="28" rx="14" fill="#bf8c62" opacity="0.7"/>
+    <rect x="305" y="364" width="472" height="18" rx="9" fill="#cfd5db" opacity="0.24"/>
+    <path d="M228 260h650" stroke="#d8ad88" stroke-opacity="0.16" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="86" y="824" fill="#d8ad88" font-family="Manrope, Arial, sans-serif" font-size="34" letter-spacing="7">E-CLASS EXECUTIVE</text>
+</svg>

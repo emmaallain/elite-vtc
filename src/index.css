@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Marcellus&display=swap');
+
+:root {
+  --bg-deep: #f7f0e7;
+  --bg-mid: #f0e4d7;
+  --bg-soft: #fffaf4;
+  --surface: rgba(255, 250, 244, 0.74);
+  --surface-strong: rgba(255, 248, 240, 0.96);
+  --line: rgba(128, 90, 61, 0.18);
+  --text-main: #2a2018;
+  --text-muted: #7a6656;
+  --copper: #9f6942;
+  --copper-soft: #c58f68;
+  --shadow: 0 24px 50px rgba(92, 68, 46, 0.12);
+  --header-bg: rgba(255, 250, 244, 0.8);
+  --hero-bg:
+    linear-gradient(140deg, rgba(255, 252, 248, 0.95), rgba(244, 234, 222, 0.9)),
+    radial-gradient(circle at 80% 20%, rgba(197, 143, 104, 0.16), transparent 40%);
+  --trust-bg:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(248, 240, 231, 0.92)),
+    radial-gradient(circle at 0% 0%, rgba(197, 143, 104, 0.1), transparent 40%);
+  --card-bg: rgba(255, 252, 248, 0.92);
+  --chip-bg: rgba(157, 106, 69, 0.1);
+  --chip-color: #8c5d3a;
+  --button-bg: rgba(255, 252, 248, 0.7);
+  --button-hover-bg: rgba(197, 143, 104, 0.12);
+  --floating-bg: linear-gradient(120deg, #1fa463, #14834f);
+  --floating-color: #f2fff7;
+  --floating-border: rgba(20, 131, 79, 0.35);
+  --whatsapp-bg: linear-gradient(120deg, #1fd07c, #159d5d);
+  --whatsapp-bg-hover: linear-gradient(120deg, #1cc873, #138551);
+  --whatsapp-text: #f2fff7;
+  --whatsapp-border: rgba(21, 157, 93, 0.32);
+
+  --font-display: 'Marcellus', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text-main);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='dark'] {
+  --bg-deep: #08090b;
+  --bg-mid: #0f1115;
+  --bg-soft: #15181d;
+  --surface: rgba(14, 16, 20, 0.84);
+  --surface-strong: rgba(18, 20, 25, 0.96);
+  --line: rgba(209, 156, 116, 0.22);
+  --text-main: #f4ede6;
+  --text-muted: #c8bbb0;
+  --copper: #c38a61;
+  --copper-soft: #dfb28b;
+  --shadow: 0 24px 50px rgba(0, 0, 0, 0.44);
+  --header-bg: rgba(8, 9, 11, 0.88);
+  --hero-bg:
+    linear-gradient(140deg, rgba(10, 11, 14, 0.98), rgba(20, 22, 27, 0.92)),
+    radial-gradient(circle at 80% 20%, rgba(209, 156, 116, 0.14), transparent 40%);
+  --trust-bg:
+    linear-gradient(180deg, rgba(14, 16, 20, 0.96), rgba(10, 11, 13, 0.92)),
+    radial-gradient(circle at 0% 0%, rgba(209, 156, 116, 0.08), transparent 40%);
+  --card-bg: rgba(16, 18, 22, 0.96);
+  --chip-bg: rgba(209, 156, 116, 0.1);
+  --chip-color: #dfb28b;
+  --button-bg: rgba(255, 255, 255, 0.03);
+  --button-hover-bg: rgba(209, 156, 116, 0.1);
+  --floating-bg: linear-gradient(120deg, #1b8f57, #12653e);
+  --floating-color: #eaffef;
+  --floating-border: rgba(27, 143, 87, 0.34);
+  --whatsapp-bg: linear-gradient(120deg, #1fd07c, #159d5d);
+  --whatsapp-bg-hover: linear-gradient(120deg, #25db86, #179865);
+  --whatsapp-text: #effff5;
+  --whatsapp-border: rgba(31, 208, 124, 0.34);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(197, 143, 104, 0.18), transparent 42%),
+    radial-gradient(circle at 90% 80%, rgba(197, 143, 104, 0.12), transparent 38%),
+    linear-gradient(120deg, var(--bg-deep), var(--bg-mid) 50%, var(--bg-soft));
+}
+
+#root {
+  min-height: 100svh;
+  width: min(1200px, 100% - 2rem);
+  margin: 1rem auto;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(160deg, rgba(255, 252, 248, 0.95), rgba(247, 239, 230, 0.92));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+:root[data-theme='dark'] #root {
+  background: linear-gradient(160deg, rgba(10, 11, 14, 0.98), rgba(16, 18, 22, 0.95));
+}
+
+a {
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}

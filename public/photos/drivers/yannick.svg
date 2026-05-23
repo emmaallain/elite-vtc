@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Yannick ALLAIN portrait</title>
+  <desc id="desc">Portrait premium en tons graphite et cuivre.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111317"/>
+      <stop offset="55%" stop-color="#1e2229"/>
+      <stop offset="100%" stop-color="#34261f"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#d8ad88" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#d8ad88" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#d8ad88" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d9b396"/>
+      <stop offset="100%" stop-color="#a87554"/>
+    </linearGradient>
+    <linearGradient id="suit" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121418"/>
+      <stop offset="100%" stop-color="#262a31"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" rx="42" fill="url(#bg)"/>
+  <rect width="800" height="1000" rx="42" fill="url(#halo)"/>
+  <circle cx="410" cy="210" r="140" fill="#d8ad88" opacity="0.08"/>
+  <circle cx="410" cy="240" r="126" fill="#bf8c62" opacity="0.08"/>
+  <path d="M250 860c20-150 98-244 160-244s140 94 160 244" fill="url(#suit)"/>
+  <path d="M320 660l-30 210h220l-30-210-52 36-48-22-48 22z" fill="#111317"/>
+  <path d="M318 664l44 70 38-28 38 28 44-70-46-38h-72z" fill="#bf8c62" opacity="0.22"/>
+  <path d="M330 430c-18 20-28 48-28 79 0 78 46 135 98 135s98-57 98-135c0-31-10-59-28-79-18-20-41-31-70-31s-52 11-70 31z" fill="url(#skin)"/>
+  <path d="M305 408c18-63 57-98 105-98 45 0 84 33 101 89-12 24-35 41-68 51-18-15-41-24-63-24-25 0-48 8-75 23z" fill="#171a1f"/>
+  <path d="M332 423c24-19 49-29 72-29 25 0 48 11 71 31 11-8 17-18 19-31-23-41-56-61-96-61-41 0-73 19-96 60 2 12 8 22 18 30z" fill="#2c3138"/>
+  <path d="M370 525c10 8 21 12 31 12 12 0 24-4 35-12" fill="none" stroke="#7e5338" stroke-width="9" stroke-linecap="round"/>
+  <path d="M350 482c11 16 28 25 49 25s38-9 49-25" fill="none" stroke="#865f44" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="373" cy="455" r="9" fill="#211913"/>
+  <circle cx="447" cy="455" r="9" fill="#211913"/>
+  <path d="M365 445c8-8 18-12 30-12" fill="none" stroke="#6b4c39" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <path d="M425 445c8-8 18-12 30-12" fill="none" stroke="#6b4c39" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <path d="M366 394c11-20 31-31 61-31 31 0 55 11 69 31-22-5-43-7-69-7-24 0-46 2-61 7z" fill="#0f1115"/>
+  <path d="M300 820c32-42 80-60 110-60s78 18 110 60" fill="none" stroke="#d8ad88" stroke-opacity="0.2" stroke-width="8" stroke-linecap="round"/>
+  <text x="72" y="920" fill="#d8ad88" font-family="Manrope, Arial, sans-serif" font-size="44" letter-spacing="6">ELITE VTC</text>
+</svg>

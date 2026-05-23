@@ -1,0 +1,564 @@
+main {
+  padding: 0 1.25rem 2rem;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--header-bg);
+  backdrop-filter: blur(14px);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-kicker {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.11rem;
+  text-transform: uppercase;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--copper-soft);
+}
+
+.site-nav {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: 0.35rem 0.62rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+  transition: color 220ms ease, border-color 220ms ease;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+}
+
+.nav-link-active {
+  color: var(--copper-soft);
+  border-color: var(--copper);
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.lang-switcher {
+  background: var(--button-bg);
+  color: var(--text-main);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42rem 0.72rem;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.theme-switcher {
+  background: var(--button-bg);
+  color: var(--text-main);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42rem 0.78rem;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.switcher-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+.whatsapp-chip {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.48rem 0.8rem;
+  border: 1px solid var(--whatsapp-border);
+  background: var(--whatsapp-bg);
+  color: var(--whatsapp-text);
+  box-shadow: 0 10px 24px rgba(21, 157, 93, 0.16);
+}
+
+.whatsapp-chip:hover,
+.whatsapp-cta:hover,
+.whatsapp-floating:hover {
+  background: var(--whatsapp-bg-hover);
+}
+
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background: var(--hero-bg);
+  animation: panelFadeIn 0.6s ease;
+}
+
+.hero-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  color: var(--copper-soft);
+  font-size: 0.76rem;
+}
+
+.hero-title {
+  margin-top: 0.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5vw, 3.7rem);
+  line-height: 1.06;
+}
+
+.hero-subtitle {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+
+.hero-actions {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cta {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.62rem 1.1rem;
+  font-weight: 600;
+}
+
+.cta-primary {
+  color: #1c1a18;
+  background: linear-gradient(120deg, var(--copper-soft), var(--copper));
+}
+
+.whatsapp-cta {
+  border: 1px solid var(--whatsapp-border);
+  background: var(--whatsapp-bg);
+  color: var(--whatsapp-text);
+  box-shadow: 0 10px 24px rgba(21, 157, 93, 0.16);
+}
+
+.cta-secondary {
+  border: 1px solid var(--line);
+  color: var(--text-main);
+}
+
+.panel {
+  margin-top: 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(1rem, 3vw, 1.8rem);
+  background: var(--surface);
+  animation: panelFadeIn 0.7s ease;
+}
+
+.trust-panel {
+  background: var(--trust-bg);
+}
+
+.trust-list {
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.trust-list li {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: var(--card-bg);
+}
+
+.section-heading {
+  margin-bottom: 1rem;
+}
+
+.section-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: var(--copper-soft);
+  font-size: 0.74rem;
+}
+
+.section-heading h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.section-subtitle {
+  margin-top: 0.45rem;
+  color: var(--text-muted);
+  max-width: 68ch;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+
+.vehicle-grid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 300px));
+  justify-content: center;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.portrait-frame {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(216, 173, 136, 0.3);
+  background: linear-gradient(135deg, rgba(216, 173, 136, 0.12), rgba(255, 250, 244, 0.92));
+}
+
+:root[data-theme='dark'] .portrait-frame {
+  border-color: rgba(209, 156, 116, 0.22);
+  background: linear-gradient(135deg, rgba(209, 156, 116, 0.08), rgba(12, 14, 18, 0.98));
+}
+
+.portrait-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.vehicle-card {
+  gap: 0.55rem;
+  padding: 0.85rem;
+  max-width: 300px;
+  justify-self: center;
+}
+
+.vehicle-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.vehicle-card-header p {
+  color: var(--text-muted);
+}
+
+.card.vehicle-card h3 {
+  font-size: 1.08rem;
+}
+
+.capacity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(31, 163, 99, 0.08);
+  color: #16854f;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.capacity-badge svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.vehicle-carousel {
+  margin-top: 0.35rem;
+  position: relative;
+  display: grid;
+  gap: 0;
+}
+
+.vehicle-carousel-topbar {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 0.45rem;
+  pointer-events: none;
+}
+
+.vehicle-carousel-title {
+  color: var(--copper-soft);
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+}
+
+.vehicle-carousel-topbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--surface) 58%, transparent) 0%,
+      transparent 18%,
+      transparent 82%,
+      color-mix(in srgb, var(--surface) 58%, transparent) 100%
+    );
+  pointer-events: none;
+}
+
+.carousel-button {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  border: none;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 66%, transparent), color-mix(in srgb, var(--text-main) 14%, transparent));
+  color: var(--text-main);
+  border-radius: 999px;
+  width: 2.35rem;
+  height: 2.35rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--shadow) 50%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.carousel-button:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 74%, transparent), color-mix(in srgb, var(--text-main) 18%, transparent));
+}
+
+.vehicle-carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(100%, 1fr);
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0.25rem;
+}
+
+.vehicle-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.vehicle-slide {
+  margin: 0;
+  scroll-snap-align: start;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(216, 173, 136, 0.22);
+  background: var(--card-bg);
+}
+
+:root[data-theme='dark'] .vehicle-slide {
+  border-color: rgba(209, 156, 116, 0.16);
+  background: rgba(12, 14, 18, 0.98);
+}
+
+.vehicle-slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.vehicle-slide figcaption {
+  padding: 0.65rem 0.8rem;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.vehicle-card-header p {
+  color: var(--text-muted);
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--copper-soft);
+}
+
+.badge {
+  margin-top: 0.35rem;
+  display: inline-block;
+  width: fit-content;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.8rem;
+}
+
+.feature-list {
+  margin: 0.35rem 0 0;
+  padding-left: 1rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.pricing-card {
+  align-items: flex-start;
+}
+
+.price-value {
+  font-size: 1.8rem;
+  color: var(--copper-soft);
+  font-family: var(--font-display);
+}
+
+.contact-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card-bg);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-width: 460px;
+}
+
+.site-footer {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.4rem;
+  color: var(--text-muted);
+}
+
+.whatsapp-floating {
+  position: fixed;
+  right: max(1rem, calc((100vw - 1200px) / 2 + 1.3rem));
+  bottom: 1.3rem;
+  z-index: 20;
+  text-decoration: none;
+  border-radius: 999px;
+  border: 1px solid var(--whatsapp-border);
+  background: var(--floating-bg);
+  color: var(--whatsapp-text);
+  padding: 0.65rem 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.whatsapp-cta {
+  color: var(--whatsapp-text);
+}
+
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .site-header {
+    gap: 0.85rem;
+  }
+
+  .header-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 0.75rem;
+  }
+
+  .header-tools {
+    justify-self: end;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 0.45rem;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+  }
+
+  .header-tools {
+    justify-content: flex-start;
+  }
+
+  .trust-list {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .vehicle-carousel-topbar {
+    padding-inline: 0.3rem;
+  }
+
+  .carousel-button {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-panel,
+  .panel {
+    animation: none;
+  }
+
+  .whatsapp-chip,
+  .whatsapp-cta,
+  .whatsapp-floating,
+  .nav-link,
+  .carousel-button {
+    transition: none;
+  }
+}

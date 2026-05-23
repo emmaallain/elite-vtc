@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Mercedes V-Class interior</title>
+  <desc id="desc">Illustration premium de l'intérieur Mercedes V-Class.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111317"/>
+      <stop offset="60%" stop-color="#1d2128"/>
+      <stop offset="100%" stop-color="#3a2c22"/>
+    </linearGradient>
+    <linearGradient id="seat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3e4249"/>
+      <stop offset="100%" stop-color="#16181d"/>
+    </linearGradient>
+    <linearGradient id="light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d8ad88" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#d8ad88" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" rx="40" fill="url(#bg)"/>
+  <rect width="1400" height="900" rx="40" fill="url(#light)"/>
+  <g transform="translate(120 150)">
+    <rect x="160" y="70" width="860" height="510" rx="42" fill="#0f1115"/>
+    <rect x="188" y="98" width="804" height="455" rx="30" fill="#1b1f25"/>
+    <rect x="235" y="130" width="260" height="330" rx="28" fill="url(#seat)"/>
+    <rect x="504" y="116" width="296" height="350" rx="28" fill="url(#seat)"/>
+    <rect x="812" y="130" width="150" height="250" rx="22" fill="url(#seat)"/>
+    <circle cx="356" cy="222" r="30" fill="#bf8c62" opacity="0.65"/>
+    <circle cx="650" cy="222" r="30" fill="#bf8c62" opacity="0.65"/>
+    <rect x="548" y="494" width="198" height="28" rx="14" fill="#bf8c62" opacity="0.55"/>
+    <rect x="536" y="520" width="220" height="36" rx="16" fill="#2d3139"/>
+    <rect x="286" y="494" width="196" height="28" rx="14" fill="#bf8c62" opacity="0.35"/>
+    <rect x="274" y="520" width="220" height="36" rx="16" fill="#2d3139"/>
+    <rect x="300" y="286" width="120" height="16" rx="8" fill="#d8ad88" opacity="0.5"/>
+    <rect x="595" y="286" width="120" height="16" rx="8" fill="#d8ad88" opacity="0.5"/>
+    <path d="M174 114h852" stroke="#d8ad88" stroke-opacity="0.12" stroke-width="4"/>
+  </g>
+  <text x="86" y="824" fill="#d8ad88" font-family="Manrope, Arial, sans-serif" font-size="34" letter-spacing="7">V-CLASS INTERIOR</text>
+</svg>
