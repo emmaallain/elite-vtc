@@ -1,15 +1,8 @@
 import { useRef } from 'react'
+import { ImageWithLoader } from './ImageWithLoader'
 
 export function VehicleCarousel({ title, gallery, language }) {
   const trackRef = useRef(null)
-
-  const handleImageError = (event, fallbackSrc) => {
-    if (event.currentTarget.src.endsWith(fallbackSrc)) {
-      return
-    }
-
-    event.currentTarget.src = fallbackSrc
-  }
 
   const scrollBySlide = (direction) => {
     const track = trackRef.current
@@ -28,12 +21,12 @@ export function VehicleCarousel({ title, gallery, language }) {
       <div ref={trackRef} className="vehicle-carousel-track" aria-label={title}>
         {gallery.map((slide) => (
           <figure key={slide.src} className="vehicle-slide">
-            <img
+            <ImageWithLoader
               src={slide.src}
+              fallbackSrc={slide.fallbackSrc}
               alt={slide.alt[language]}
-              loading="lazy"
-              decoding="async"
-              onError={(event) => handleImageError(event, slide.fallbackSrc)}
+              className="vehicle-image"
+              wrapperClassName="vehicle-image-shell"
             />
           </figure>
         ))}

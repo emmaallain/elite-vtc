@@ -1,17 +1,10 @@
 import { SectionHeading } from '../components/SectionHeading'
+import { ImageWithLoader } from '../components/ImageWithLoader'
 import { drivers } from '../data/drivers'
 import { useTranslation } from '../hooks/useTranslation'
 
 export function DriversPage() {
   const { t, language } = useTranslation()
-
-  const handleImageError = (event, fallbackSrc) => {
-    if (event.currentTarget.src.endsWith(fallbackSrc)) {
-      return
-    }
-
-    event.currentTarget.src = fallbackSrc
-  }
 
   return (
     <section className="panel">
@@ -24,13 +17,12 @@ export function DriversPage() {
         {drivers.map((driver) => (
           <article key={driver.id} className="card">
             <div className="portrait-frame">
-              <img
+              <ImageWithLoader
                 src={driver.photo}
+                fallbackSrc={driver.photoFallback}
                 alt={driver.name[language]}
                 className="portrait-image"
-                loading="lazy"
-                decoding="async"
-                onError={(event) => handleImageError(event, driver.photoFallback)}
+                wrapperClassName="portrait-image-shell"
               />
             </div>
             <h3>{driver.name[language]}</h3>
