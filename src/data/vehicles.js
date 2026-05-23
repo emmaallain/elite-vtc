@@ -1,3 +1,5 @@
+const MEDIA_BASE = `${import.meta.env.BASE_URL}photos`
+
 export const vehicles = [
   {
     id: 'vehicle-1',
@@ -11,11 +13,11 @@ export const vehicles = [
     },
     gallery: [
       {
-        src: '/photos/vehicles/v-class-exterior.jpg',
+        src: `${MEDIA_BASE}/vehicles/v-class-exterior.jpg`,
         alt: { fr: 'Mercedes Classe V de profil', en: 'Mercedes V-Class side view' },
       },
       {
-        src: '/photos/vehicles/v-class-interior.jpg',
+        src: `${MEDIA_BASE}/vehicles/v-class-interior.jpg`,
         alt: { fr: 'Mercedes Classe V interieur', en: 'Mercedes V-Class interior' },
       },
     ],
@@ -32,11 +34,11 @@ export const vehicles = [
     },
     gallery: [
       {
-        src: '/photos/vehicles/v-class-exterior.jpg',
+        src: `${MEDIA_BASE}/vehicles/v-class-exterior.jpg`,
         alt: { fr: 'Mercedes Classe V de profil', en: 'Mercedes V-Class side view' },
       },
       {
-        src: '/photos/vehicles/v-class-interior.jpg',
+        src: `${MEDIA_BASE}/vehicles/v-class-interior.jpg`,
         alt: { fr: 'Mercedes Classe V interieur', en: 'Mercedes V-Class interior' },
       },
     ],

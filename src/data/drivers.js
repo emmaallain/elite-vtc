@@ -1,3 +1,5 @@
+const MEDIA_BASE = `${import.meta.env.BASE_URL}photos`
+
 export const drivers = [
   {
     id: 'driver-1',
@@ -10,7 +12,7 @@ export const drivers = [
     languages: { fr: ['Francais', 'English'], en: ['French', 'English'] },
     availability: true,
     phone: '+33 6 12 34 56 78',
-    photo: '/photos/drivers/yannick.jpg',
+    photo: `${MEDIA_BASE}/drivers/yannick.jpg`,
   },
   {
     id: 'driver-2',
@@ -23,6 +25,6 @@ export const drivers = [
     languages: { fr: ['Francais', 'English', 'Allemand'], en: ['French', 'English', 'German'] },
     availability: true,
     phone: '+33 6 98 76 54 32',
-    photo: '/photos/drivers/christelle.jpg',
+    photo: `${MEDIA_BASE}/drivers/christelle.jpg`,
   },
 ]
