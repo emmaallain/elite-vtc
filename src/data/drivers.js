@@ -1,4 +1,7 @@
-const MEDIA_BASE = `${import.meta.env.BASE_URL}photos`
+import { getMediaSource } from '../utils/media'
+
+const yannickPhoto = getMediaSource('drivers/yannick.jpg', { width: 900 })
+const christellePhoto = getMediaSource('drivers/christelle.jpg', { width: 900 })
 
 export const drivers = [
   {
@@ -12,7 +15,8 @@ export const drivers = [
     languages: { fr: ['Francais', 'English'], en: ['French', 'English'] },
     availability: true,
     phone: '+33 6 12 34 56 78',
-    photo: `${MEDIA_BASE}/drivers/yannick.jpg`,
+    photo: yannickPhoto.src,
+    photoFallback: yannickPhoto.fallbackSrc,
   },
   {
     id: 'driver-2',
@@ -25,6 +29,7 @@ export const drivers = [
     languages: { fr: ['Francais', 'English', 'Allemand'], en: ['French', 'English', 'German'] },
     availability: true,
     phone: '+33 6 98 76 54 32',
-    photo: `${MEDIA_BASE}/drivers/christelle.jpg`,
+    photo: christellePhoto.src,
+    photoFallback: christellePhoto.fallbackSrc,
   },
 ]

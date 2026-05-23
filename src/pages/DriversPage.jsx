@@ -5,6 +5,14 @@ import { useTranslation } from '../hooks/useTranslation'
 export function DriversPage() {
   const { t, language } = useTranslation()
 
+  const handleImageError = (event, fallbackSrc) => {
+    if (event.currentTarget.src.endsWith(fallbackSrc)) {
+      return
+    }
+
+    event.currentTarget.src = fallbackSrc
+  }
+
   return (
     <section className="panel">
       <SectionHeading
@@ -16,7 +24,14 @@ export function DriversPage() {
         {drivers.map((driver) => (
           <article key={driver.id} className="card">
             <div className="portrait-frame">
-              <img src={driver.photo} alt={driver.name[language]} className="portrait-image" />
+              <img
+                src={driver.photo}
+                alt={driver.name[language]}
+                className="portrait-image"
+                loading="lazy"
+                decoding="async"
+                onError={(event) => handleImageError(event, driver.photoFallback)}
+              />
             </div>
             <h3>{driver.name[language]}</h3>
             <p>{driver.experience[language]}</p>

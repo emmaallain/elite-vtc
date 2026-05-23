@@ -1,4 +1,7 @@
-const MEDIA_BASE = `${import.meta.env.BASE_URL}photos`
+import { getMediaSource } from '../utils/media'
+
+const vehicleExterior = getMediaSource('vehicles/v-class-exterior.jpg', { width: 1400 })
+const vehicleInterior = getMediaSource('vehicles/v-class-interior.jpg', { width: 1400 })
 
 export const vehicles = [
   {
@@ -13,11 +16,13 @@ export const vehicles = [
     },
     gallery: [
       {
-        src: `${MEDIA_BASE}/vehicles/v-class-exterior.jpg`,
+        src: vehicleExterior.src,
+        fallbackSrc: vehicleExterior.fallbackSrc,
         alt: { fr: 'Mercedes Classe V de profil', en: 'Mercedes V-Class side view' },
       },
       {
-        src: `${MEDIA_BASE}/vehicles/v-class-interior.jpg`,
+        src: vehicleInterior.src,
+        fallbackSrc: vehicleInterior.fallbackSrc,
         alt: { fr: 'Mercedes Classe V interieur', en: 'Mercedes V-Class interior' },
       },
     ],
@@ -34,11 +39,13 @@ export const vehicles = [
     },
     gallery: [
       {
-        src: `${MEDIA_BASE}/vehicles/v-class-exterior.jpg`,
+        src: vehicleExterior.src,
+        fallbackSrc: vehicleExterior.fallbackSrc,
         alt: { fr: 'Mercedes Classe V de profil', en: 'Mercedes V-Class side view' },
       },
       {
-        src: `${MEDIA_BASE}/vehicles/v-class-interior.jpg`,
+        src: vehicleInterior.src,
+        fallbackSrc: vehicleInterior.fallbackSrc,
         alt: { fr: 'Mercedes Classe V interieur', en: 'Mercedes V-Class interior' },
       },
     ],
