@@ -13,9 +13,9 @@ export function DriversPage() {
         subtitle={t.pages.driversIntro}
       />
 
-      <div className="card-grid">
+      <div className="card-grid driver-grid">
         {drivers.map((driver) => (
-          <article key={driver.id} className="card">
+          <article key={driver.id} className="card driver-card">
             <div className="portrait-frame">
               <ImageWithLoader
                 src={driver.photo}
@@ -25,15 +25,17 @@ export function DriversPage() {
                 wrapperClassName="portrait-image-shell"
               />
             </div>
-            <h3>{driver.name[language]}</h3>
-            <p>{driver.experience[language]}</p>
-            <p>{driver.specialty[language]}</p>
-            <p>{driver.languages[language].join(' • ')}</p>
-            <p className="driver-phone">{driver.phone}</p>
-            <p className={driver.availability ? 'badge badge-available' : 'badge badge-unavailable'}>
-              <span className="badge-dot"></span>
-              {driver.availability ? t.common.available : t.common.unavailable}
-            </p>
+            <div className="driver-card-content">
+              <h3>{driver.name[language]}</h3>
+              <p>{driver.experience[language]}</p>
+              <p>{driver.specialty[language]}</p>
+              <p>{driver.languages[language].join(' • ')}</p>
+              <p className="driver-phone">{driver.phone}</p>
+              <p className={driver.availability ? 'badge badge-available' : 'badge badge-unavailable'}>
+                <span className="badge-dot"></span>
+                {driver.availability ? t.common.available : t.common.unavailable}
+              </p>
+            </div>
           </article>
         ))}
       </div>

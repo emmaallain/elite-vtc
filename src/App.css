@@ -68,15 +68,39 @@ main {
 
 .lang-switcher {
   background: var(--button-bg);
-  color: var(--text-main);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.42rem 0.72rem;
-  cursor: pointer;
-  font-weight: 600;
+  padding: 0.2rem;
+  height: 2.4rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.25rem;
+}
+
+.lang-option {
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 140ms ease, background-color 140ms ease;
+}
+
+.lang-option:hover {
+  transform: translateY(-1px);
+}
+
+.lang-option-active {
+  background: color-mix(in srgb, var(--copper-soft) 28%, transparent);
+}
+
+.lang-flag {
+  font-size: 1.05rem;
+  line-height: 1;
 }
 
 .theme-switcher {
@@ -84,7 +108,8 @@ main {
   color: var(--text-main);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.42rem 0.78rem;
+  height: 2.4rem;
+  padding: 0 0.78rem;
   cursor: pointer;
   font-weight: 600;
   display: inline-flex;
@@ -235,6 +260,11 @@ main {
 
 .vehicle-grid {
   grid-template-columns: repeat(auto-fit, minmax(190px, 300px));
+  justify-content: start;
+}
+
+.driver-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   justify-content: center;
 }
 
@@ -346,6 +376,54 @@ main {
   padding: 0.85rem;
   max-width: 300px;
   justify-self: center;
+}
+
+.driver-card {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.8rem;
+  max-width: 520px;
+  width: 100%;
+  justify-self: center;
+}
+
+.driver-card .portrait-frame {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.driver-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.card.driver-card h3 {
+  font-size: 1.1rem;
+}
+
+.driver-card p {
+  font-size: 0.9rem;
+}
+
+.driver-card .badge {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 560px) {
+  .driver-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .driver-card {
+    flex-direction: column;
+  }
+
+  .driver-card .portrait-frame {
+    width: 100%;
+  }
 }
 
 .vehicle-card-header {
@@ -632,7 +710,13 @@ main {
 .contact-cta {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
   margin-top: 2rem;
+}
+
+.contact-quick-link {
+  border-style: solid;
 }
 
 .contact-card {

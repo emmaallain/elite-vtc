@@ -28,7 +28,7 @@ export const dictionaries = {
     },
     sections: {
       drivers: 'Nos Chauffeurs',
-      vehicles: 'Notre Flotte',
+      vehicles: 'Collection Prestige',
       services: 'Nos Services',
       pricing: 'Tarifs Indicatifs',
       contact: 'Contact Direct',
@@ -97,7 +97,7 @@ export const dictionaries = {
     },
     sections: {
       drivers: 'Our Drivers',
-      vehicles: 'Our Fleet',
+      vehicles: 'Signature Collection',
       services: 'Our Services',
       pricing: 'Indicative Pricing',
       contact: 'Direct Contact',

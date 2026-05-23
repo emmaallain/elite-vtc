@@ -55,6 +55,8 @@ function LocationIcon() {
 
 export function ContactPage() {
   const { t } = useTranslation()
+  const phoneHref = `tel:${SITE_CONFIG.phone.replace(/\s+/g, '')}`
+  const emailHref = `mailto:${SITE_CONFIG.email}`
 
   return (
     <section className="panel">
@@ -90,6 +92,12 @@ export function ContactPage() {
       </div>
 
       <div className="contact-cta">
+        <a className="cta cta-secondary contact-quick-link" href={phoneHref}>
+          Appeler
+        </a>
+        <a className="cta cta-secondary contact-quick-link" href={emailHref}>
+          Envoyer un email
+        </a>
         <a className="cta cta-primary whatsapp-cta" href={createWhatsAppUrl()} target="_blank" rel="noreferrer">
           {t.common.whatsappNow}
         </a>
