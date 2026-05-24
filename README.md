@@ -30,3 +30,68 @@ The project supports Cloudinary for faster image delivery with a local fallback.
 	- `VITE_VEHICLE_INTERIOR_IMAGE`
 
 If `VITE_CLOUDINARY_CLOUD_NAME` is empty, the app automatically uses local images from `public/photos`.
+
+## Cross-Device Persistence (Supabase)
+
+Admin content and reviews can be shared across devices through Supabase.
+
+1. Add these variables to your `.env`:
+	 - `VITE_SUPABASE_URL`
+	 - `VITE_SUPABASE_ANON_KEY`
+	 - `VITE_ADMIN_EMAIL` (optional, recommended)
+2. In Supabase SQL Editor, create the table:
+
+```sql
+create table if not exists public.elite_app_state (
+	id text primary key,
+	payload jsonb not null default '[]'::jsonb,
+	updated_at timestamptz not null default now()
+);
+```
+
+3. Add RLS policies (admin-only writes):
+
+```sql
+alter table public.elite_app_state enable row level security;
+
+create policy "Allow read app state"
+on public.elite_app_state
+for select
+to anon
+using (true);
+
+create policy "Allow insert app state for admin"
+on public.elite_app_state
+for insert
+to authenticated
+with check (auth.jwt() ->> 'email' = 'your-admin@email.com');
+
+create policy "Allow update app state for admin"
+on public.elite_app_state
+for update
+to authenticated
+using (auth.jwt() ->> 'email' = 'your-admin@email.com')
+with check (auth.jwt() ->> 'email' = 'your-admin@email.com');
+
+create policy "Allow delete app state for admin"
+on public.elite_app_state
+for delete
+to authenticated
+using (auth.jwt() ->> 'email' = 'your-admin@email.com');
+```
+
+Without Supabase variables, the app falls back to local browser storage only.
+
+## Secure Admin Login (Supabase Auth)
+
+The hidden admin mode can use Supabase email/password authentication.
+
+1. In Supabase Dashboard, open Authentication > Providers.
+2. Enable Email provider.
+3. Create an admin user in Authentication > Users.
+4. In `.env`, set `VITE_ADMIN_EMAIL` to that admin email (recommended to restrict admin access).
+5. Restart the app.
+
+Behavior:
+- If Supabase is configured, admin login uses email/password.
+- If Supabase is not configured, admin falls back to local code mode.

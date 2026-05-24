@@ -5,20 +5,55 @@ import { vehicles } from '../data/vehicles'
 import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
 import { getStoredArray, setStoredArray, VEHICLES_STORAGE_KEY } from '../utils/adminData'
+import { readCloudArray, writeCloudArray } from '../utils/cloudStorage'
 import { MdPerson } from 'react-icons/md'
 
 export function VehiclesPage() {
   const { t, contentLanguage } = useTranslation()
   const { isAdmin } = useAdmin()
   const [vehicleItems, setVehicleItems] = useState(vehicles)
+  const [isSyncedReady, setIsSyncedReady] = useState(false)
 
   useEffect(() => {
-    setVehicleItems(getStoredArray(VEHICLES_STORAGE_KEY, vehicles))
+    let isMounted = true
+
+    const hydrate = async () => {
+      const localVehicles = getStoredArray(VEHICLES_STORAGE_KEY, vehicles)
+
+      if (!isMounted) {
+        return
+      }
+
+      setVehicleItems(localVehicles)
+
+      const cloudVehicles = await readCloudArray(VEHICLES_STORAGE_KEY)
+
+      if (!isMounted) {
+        return
+      }
+
+      if (Array.isArray(cloudVehicles)) {
+        setVehicleItems(cloudVehicles)
+      }
+
+      setIsSyncedReady(true)
+    }
+
+    hydrate()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   useEffect(() => {
+    if (!isSyncedReady) {
+      return
+    }
+
     setStoredArray(VEHICLES_STORAGE_KEY, vehicleItems)
-  }, [vehicleItems])
+    writeCloudArray(VEHICLES_STORAGE_KEY, vehicleItems)
+  }, [vehicleItems, isSyncedReady])
 
   const handleDeleteVehicle = (vehicleId) => {
     setVehicleItems((current) => current.filter((vehicle) => vehicle.id !== vehicleId))

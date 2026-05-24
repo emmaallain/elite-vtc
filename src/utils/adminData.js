@@ -3,6 +3,7 @@ const SUPPORTED_LANGUAGES = ['fr', 'en', 'ru', 'ar']
 export const DRIVERS_STORAGE_KEY = 'elite-vtc-admin-drivers'
 export const VEHICLES_STORAGE_KEY = 'elite-vtc-admin-vehicles'
 export const EXCURSIONS_STORAGE_KEY = 'elite-vtc-admin-excursions'
+export const REVIEWS_STORAGE_KEY = 'elite-vtc-reviews'
 
 export function getStoredArray(storageKey, fallbackArray) {
   try {

@@ -5,19 +5,54 @@ import { drivers } from '../data/drivers'
 import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
 import { DRIVERS_STORAGE_KEY, getStoredArray, setStoredArray } from '../utils/adminData'
+import { readCloudArray, writeCloudArray } from '../utils/cloudStorage'
 
 export function DriversPage() {
   const { t, contentLanguage } = useTranslation()
   const { isAdmin } = useAdmin()
   const [driverItems, setDriverItems] = useState(drivers)
+  const [isSyncedReady, setIsSyncedReady] = useState(false)
 
   useEffect(() => {
-    setDriverItems(getStoredArray(DRIVERS_STORAGE_KEY, drivers))
+    let isMounted = true
+
+    const hydrate = async () => {
+      const localDrivers = getStoredArray(DRIVERS_STORAGE_KEY, drivers)
+
+      if (!isMounted) {
+        return
+      }
+
+      setDriverItems(localDrivers)
+
+      const cloudDrivers = await readCloudArray(DRIVERS_STORAGE_KEY)
+
+      if (!isMounted) {
+        return
+      }
+
+      if (Array.isArray(cloudDrivers)) {
+        setDriverItems(cloudDrivers)
+      }
+
+      setIsSyncedReady(true)
+    }
+
+    hydrate()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   useEffect(() => {
+    if (!isSyncedReady) {
+      return
+    }
+
     setStoredArray(DRIVERS_STORAGE_KEY, driverItems)
-  }, [driverItems])
+    writeCloudArray(DRIVERS_STORAGE_KEY, driverItems)
+  }, [driverItems, isSyncedReady])
 
   const handleDeleteDriver = (driverId) => {
     setDriverItems((current) => current.filter((driver) => driver.id !== driverId))

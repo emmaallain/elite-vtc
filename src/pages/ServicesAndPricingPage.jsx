@@ -7,21 +7,56 @@ import { services } from '../data/services'
 import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
 import { EXCURSIONS_STORAGE_KEY, getStoredArray, setStoredArray } from '../utils/adminData'
+import { readCloudArray, writeCloudArray } from '../utils/cloudStorage'
 import { createWhatsAppUrl } from '../utils/whatsapp'
 
 export function ServicesAndPricingPage() {
   const { t, language, contentLanguage } = useTranslation()
   const { isAdmin } = useAdmin()
   const [excursionItems, setExcursionItems] = useState(excursions)
+  const [isSyncedReady, setIsSyncedReady] = useState(false)
   const [selectedExcursion, setSelectedExcursion] = useState(null)
 
   useEffect(() => {
-    setExcursionItems(getStoredArray(EXCURSIONS_STORAGE_KEY, excursions))
+    let isMounted = true
+
+    const hydrate = async () => {
+      const localExcursions = getStoredArray(EXCURSIONS_STORAGE_KEY, excursions)
+
+      if (!isMounted) {
+        return
+      }
+
+      setExcursionItems(localExcursions)
+
+      const cloudExcursions = await readCloudArray(EXCURSIONS_STORAGE_KEY)
+
+      if (!isMounted) {
+        return
+      }
+
+      if (Array.isArray(cloudExcursions)) {
+        setExcursionItems(cloudExcursions)
+      }
+
+      setIsSyncedReady(true)
+    }
+
+    hydrate()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   useEffect(() => {
+    if (!isSyncedReady) {
+      return
+    }
+
     setStoredArray(EXCURSIONS_STORAGE_KEY, excursionItems)
-  }, [excursionItems])
+    writeCloudArray(EXCURSIONS_STORAGE_KEY, excursionItems)
+  }, [excursionItems, isSyncedReady])
 
   useEffect(() => {
     if (!selectedExcursion) {

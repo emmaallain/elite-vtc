@@ -81,6 +81,26 @@ main {
   gap: 0.65rem;
 }
 
+.admin-chip-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.admin-email-chip {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid var(--line);
+  background: var(--button-bg);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.33rem 0.56rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
 .admin-pill {
   border: 1px solid color-mix(in srgb, var(--copper-soft) 70%, var(--line));
   background: color-mix(in srgb, var(--copper-soft) 22%, var(--button-bg));

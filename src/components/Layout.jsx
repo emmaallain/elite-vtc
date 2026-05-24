@@ -25,11 +25,19 @@ export function Layout() {
   const { t, language } = useTranslation()
   const {
     isAdmin,
+    adminSessionEmail,
+    isSupabaseAuthEnabled,
+    canUseLegacyCodeMode,
     isAdminDialogOpen,
     adminCodeInput,
+    adminEmailInput,
+    adminPasswordInput,
     adminError,
+    isSubmittingAuth,
     requestAdminAccess,
     setAdminCodeInput,
+    setAdminEmailInput,
+    setAdminPasswordInput,
     submitAdminCode,
     closeAdminDialog,
     disableAdmin,
@@ -59,13 +67,20 @@ export function Layout() {
 
           <div className="header-tools">
             {isAdmin ? (
-              <button
-                type="button"
-                className="admin-pill"
-                onClick={disableAdmin}
-              >
-                Admin ON
-              </button>
+              <div className="admin-chip-group">
+                {adminSessionEmail ? (
+                  <span className="admin-email-chip" title={adminSessionEmail}>
+                    Admin: {adminSessionEmail}
+                  </span>
+                ) : null}
+                <button
+                  type="button"
+                  className="admin-pill"
+                  onClick={disableAdmin}
+                >
+                  Admin ON
+                </button>
+              </div>
             ) : null}
             <ThemeSwitcher />
             <LanguageSwitcher />
@@ -111,18 +126,49 @@ export function Layout() {
             aria-labelledby="admin-dialog-title"
             onClick={(event) => event.stopPropagation()}
           >
-            <h2 id="admin-dialog-title">Accès admin</h2>
-            <input
-              type="password"
-              value={adminCodeInput}
-              onChange={(event) => setAdminCodeInput(event.target.value)}
-              placeholder="Code secret"
-              autoFocus
-            />
+            <h2 id="admin-dialog-title">{isSupabaseAuthEnabled ? 'Connexion admin' : 'Acces admin'}</h2>
+
+            {isSupabaseAuthEnabled ? (
+              <>
+                <input
+                  type="email"
+                  value={adminEmailInput}
+                  onChange={(event) => setAdminEmailInput(event.target.value)}
+                  placeholder="Email admin"
+                  autoFocus
+                />
+                <input
+                  type="password"
+                  value={adminPasswordInput}
+                  onChange={(event) => setAdminPasswordInput(event.target.value)}
+                  placeholder="Mot de passe"
+                />
+              </>
+            ) : canUseLegacyCodeMode ? (
+              <input
+                type="password"
+                value={adminCodeInput}
+                onChange={(event) => setAdminCodeInput(event.target.value)}
+                placeholder="Code secret"
+                autoFocus
+              />
+            ) : (
+              <p className="admin-dialog-error">
+                Mode admin verrouille: configurez Supabase pour vous connecter.
+              </p>
+            )}
+
             {adminError ? <p className="admin-dialog-error">{adminError}</p> : null}
             <div className="admin-dialog-actions">
               <button type="button" className="cta cta-secondary" onClick={closeAdminDialog}>Annuler</button>
-              <button type="button" className="cta cta-primary" onClick={submitAdminCode}>Activer</button>
+              <button
+                type="button"
+                className="cta cta-primary"
+                onClick={submitAdminCode}
+                disabled={isSubmittingAuth || (!isSupabaseAuthEnabled && !canUseLegacyCodeMode)}
+              >
+                {isSupabaseAuthEnabled ? 'Se connecter' : 'Activer'}
+              </button>
             </div>
           </section>
         </div>

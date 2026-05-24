@@ -15,6 +15,7 @@ import {
   setStoredArray,
   VEHICLES_STORAGE_KEY,
 } from '../utils/adminData'
+import { readCloudArray, writeCloudArray } from '../utils/cloudStorage'
 
 export function AdminPage() {
   const { isAdmin } = useAdmin()
@@ -22,6 +23,7 @@ export function AdminPage() {
   const [driverItems, setDriverItems] = useState(drivers)
   const [vehicleItems, setVehicleItems] = useState(vehicles)
   const [excursionItems, setExcursionItems] = useState(excursions)
+  const [isSyncedReady, setIsSyncedReady] = useState(false)
 
   const [newDriver, setNewDriver] = useState({
     name: '',
@@ -48,22 +50,79 @@ export function AdminPage() {
   })
 
   useEffect(() => {
-    setDriverItems(getStoredArray(DRIVERS_STORAGE_KEY, drivers))
-    setVehicleItems(getStoredArray(VEHICLES_STORAGE_KEY, vehicles))
-    setExcursionItems(getStoredArray(EXCURSIONS_STORAGE_KEY, excursions))
+    let isMounted = true
+
+    const hydrate = async () => {
+      const localDrivers = getStoredArray(DRIVERS_STORAGE_KEY, drivers)
+      const localVehicles = getStoredArray(VEHICLES_STORAGE_KEY, vehicles)
+      const localExcursions = getStoredArray(EXCURSIONS_STORAGE_KEY, excursions)
+
+      if (!isMounted) {
+        return
+      }
+
+      setDriverItems(localDrivers)
+      setVehicleItems(localVehicles)
+      setExcursionItems(localExcursions)
+
+      const [cloudDrivers, cloudVehicles, cloudExcursions] = await Promise.all([
+        readCloudArray(DRIVERS_STORAGE_KEY),
+        readCloudArray(VEHICLES_STORAGE_KEY),
+        readCloudArray(EXCURSIONS_STORAGE_KEY),
+      ])
+
+      if (!isMounted) {
+        return
+      }
+
+      if (Array.isArray(cloudDrivers)) {
+        setDriverItems(cloudDrivers)
+      }
+
+      if (Array.isArray(cloudVehicles)) {
+        setVehicleItems(cloudVehicles)
+      }
+
+      if (Array.isArray(cloudExcursions)) {
+        setExcursionItems(cloudExcursions)
+      }
+
+      setIsSyncedReady(true)
+    }
+
+    hydrate()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   useEffect(() => {
+    if (!isSyncedReady) {
+      return
+    }
+
     setStoredArray(DRIVERS_STORAGE_KEY, driverItems)
-  }, [driverItems])
+    writeCloudArray(DRIVERS_STORAGE_KEY, driverItems)
+  }, [driverItems, isSyncedReady])
 
   useEffect(() => {
+    if (!isSyncedReady) {
+      return
+    }
+
     setStoredArray(VEHICLES_STORAGE_KEY, vehicleItems)
-  }, [vehicleItems])
+    writeCloudArray(VEHICLES_STORAGE_KEY, vehicleItems)
+  }, [vehicleItems, isSyncedReady])
 
   useEffect(() => {
+    if (!isSyncedReady) {
+      return
+    }
+
     setStoredArray(EXCURSIONS_STORAGE_KEY, excursionItems)
-  }, [excursionItems])
+    writeCloudArray(EXCURSIONS_STORAGE_KEY, excursionItems)
+  }, [excursionItems, isSyncedReady])
 
   if (!isAdmin) {
     return <Navigate to="/" replace />

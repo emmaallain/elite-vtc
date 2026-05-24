@@ -2,8 +2,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
+import { REVIEWS_STORAGE_KEY } from '../utils/adminData'
+import { readCloudArray, writeCloudArray } from '../utils/cloudStorage'
 
-const STORAGE_KEY = 'elite-vtc-reviews'
 const DEFAULT_REVIEWS = [
   {
     id: 'default-review-1',
@@ -48,6 +49,7 @@ export function ReviewsPage() {
   const { t, language } = useTranslation()
   const { isAdmin } = useAdmin()
   const [reviews, setReviews] = useState([])
+  const [isSyncedReady, setIsSyncedReady] = useState(false)
   const [isReviewDialogOpen, setIsReviewDialogOpen] = useState(false)
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
@@ -56,32 +58,58 @@ export function ReviewsPage() {
   const locale = useMemo(() => getLocale(language), [language])
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY)
+    let isMounted = true
 
-      if (!raw) {
-        setReviews(DEFAULT_REVIEWS)
+    const hydrate = async () => {
+      let localReviews = DEFAULT_REVIEWS
+
+      try {
+        const raw = localStorage.getItem(REVIEWS_STORAGE_KEY)
+
+        if (raw) {
+          const parsed = JSON.parse(raw)
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            localReviews = parsed
+          }
+        }
+      } catch {
+        localReviews = DEFAULT_REVIEWS
+      }
+
+      if (!isMounted) {
         return
       }
 
-      const parsed = JSON.parse(raw)
+      setReviews(localReviews)
 
-      if (Array.isArray(parsed)) {
-        if (parsed.length === 0) {
-          setReviews(DEFAULT_REVIEWS)
-          return
-        }
+      const cloudReviews = await readCloudArray(REVIEWS_STORAGE_KEY)
 
-        setReviews(parsed)
+      if (!isMounted) {
+        return
       }
-    } catch {
-      setReviews(DEFAULT_REVIEWS)
+
+      if (Array.isArray(cloudReviews) && cloudReviews.length > 0) {
+        setReviews(cloudReviews)
+      }
+
+      setIsSyncedReady(true)
+    }
+
+    hydrate()
+
+    return () => {
+      isMounted = false
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews))
-  }, [reviews])
+    if (!isSyncedReady) {
+      return
+    }
+
+    localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(reviews))
+    writeCloudArray(REVIEWS_STORAGE_KEY, reviews)
+  }, [reviews, isSyncedReady])
 
   useEffect(() => {
     if (!isReviewDialogOpen) {
