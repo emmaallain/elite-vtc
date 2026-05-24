@@ -36,6 +36,14 @@ export function localizedText(value) {
   }, {})
 }
 
+function isLocalizedValue(value) {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
+}
+
+function ensureLocalizedText(value) {
+  return isLocalizedValue(value) ? value : localizedText(value)
+}
+
 export function localizedList(value) {
   const items = value
     .split(',')
@@ -48,15 +56,19 @@ export function localizedList(value) {
   }, {})
 }
 
-export function createDriverFromAdminInput({ name, phone, experience, specialty, languagesCsv, photoUrl, availability }) {
+function ensureLocalizedList(value) {
+  return isLocalizedValue(value) ? value : localizedList(value)
+}
+
+export function createDriverFromAdminInput({ name, phone, experience, specialty, languagesCsv, languages, photoUrl, availability }) {
   const timestamp = Date.now()
 
   return {
     id: `driver-admin-${timestamp}`,
-    name: localizedText(name),
-    experience: localizedText(experience),
-    specialty: localizedText(specialty),
-    languages: localizedList(languagesCsv),
+    name: ensureLocalizedText(name),
+    experience: ensureLocalizedText(experience),
+    specialty: ensureLocalizedText(specialty),
+    languages: ensureLocalizedList(languages || languagesCsv),
     availability,
     phone,
     photo: photoUrl,
@@ -64,33 +76,33 @@ export function createDriverFromAdminInput({ name, phone, experience, specialty,
   }
 }
 
-export function createVehicleFromAdminInput({ name, category, capacityCount, featuresCsv, imageUrl }) {
+export function createVehicleFromAdminInput({ name, category, capacityCount, capacityLabel, featuresCsv, features, imageUrl }) {
   const safeCapacity = Number.isFinite(capacityCount) && capacityCount > 0 ? capacityCount : 1
   const timestamp = Date.now()
 
   return {
     id: `vehicle-admin-${timestamp}`,
-    name: localizedText(name),
-    category: localizedText(category),
-    capacity: localizedText(`${safeCapacity} passengers`),
+    name: ensureLocalizedText(name),
+    category: ensureLocalizedText(category),
+    capacity: ensureLocalizedText(capacityLabel || `${safeCapacity} passagers`),
     capacityCount: safeCapacity,
-    features: localizedList(featuresCsv),
+    features: ensureLocalizedList(features || featuresCsv),
     gallery: [
       {
         src: imageUrl,
         fallbackSrc: imageUrl,
-        alt: localizedText(name),
+        alt: ensureLocalizedText(name),
       },
     ],
   }
 }
 
-export function createExcursionFromAdminInput({ name, summary, imageUrl }) {
+export function createExcursionFromAdminInput({ name, summary, imageUrl, priceEstimate = 'Sur devis' }) {
   const timestamp = Date.now()
 
   return {
     id: `excursion-admin-${timestamp}`,
-    name: localizedText(name),
+    name: ensureLocalizedText(name),
     image: {
       src: imageUrl,
       fallbackSrc: imageUrl,
@@ -99,10 +111,10 @@ export function createExcursionFromAdminInput({ name, summary, imageUrl }) {
       {
         src: imageUrl,
         fallbackSrc: imageUrl,
-        alt: localizedText(name),
+        alt: ensureLocalizedText(name),
       },
     ],
-    summary: localizedText(summary),
-    priceEstimate: localizedText('On request'),
+    summary: ensureLocalizedText(summary),
+    priceEstimate: ensureLocalizedText(priceEstimate),
   }
 }

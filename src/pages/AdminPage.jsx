@@ -15,6 +15,7 @@ import {
   setStoredArray,
   VEHICLES_STORAGE_KEY,
 } from '../utils/adminData'
+import { buildLocalizedList, buildLocalizedText } from '../utils/autoTranslate'
 import { readCloudArray, writeCloudArray } from '../utils/cloudStorage'
 
 export function AdminPage() {
@@ -48,6 +49,8 @@ export function AdminPage() {
     summary: '',
     imageUrl: '',
   })
+  const [isAutoTranslating, setIsAutoTranslating] = useState(false)
+  const [adminStatus, setAdminStatus] = useState('')
 
   useEffect(() => {
     let isMounted = true
@@ -128,7 +131,7 @@ export function AdminPage() {
     return <Navigate to="/" replace />
   }
 
-  const handleAddDriver = (event) => {
+  const handleAddDriver = async (event) => {
     event.preventDefault()
 
     const payload = {
@@ -145,7 +148,26 @@ export function AdminPage() {
       return
     }
 
-    setDriverItems((current) => [createDriverFromAdminInput(payload), ...current])
+    setIsAutoTranslating(true)
+    setAdminStatus('Traduction automatique du chauffeur en cours...')
+
+    const [localizedName, localizedExperience, localizedSpecialty, localizedLanguages] = await Promise.all([
+      buildLocalizedText(payload.name),
+      buildLocalizedText(payload.experience || payload.name),
+      buildLocalizedText(payload.specialty || payload.name),
+      buildLocalizedList(payload.languagesCsv || 'Français'),
+    ])
+
+    setDriverItems((current) => [
+      createDriverFromAdminInput({
+        ...payload,
+        name: localizedName,
+        experience: localizedExperience,
+        specialty: localizedSpecialty,
+        languages: localizedLanguages,
+      }),
+      ...current,
+    ])
 
     setNewDriver({
       name: '',
@@ -156,9 +178,12 @@ export function AdminPage() {
       photoUrl: '',
       availability: true,
     })
+
+    setAdminStatus('Chauffeur ajouté avec traduction automatique.')
+    setIsAutoTranslating(false)
   }
 
-  const handleAddVehicle = (event) => {
+  const handleAddVehicle = async (event) => {
     event.preventDefault()
 
     const payload = {
@@ -174,7 +199,26 @@ export function AdminPage() {
       return
     }
 
-    setVehicleItems((current) => [createVehicleFromAdminInput(payload), ...current])
+    setIsAutoTranslating(true)
+    setAdminStatus('Traduction automatique du véhicule en cours...')
+
+    const [localizedName, localizedCategory, localizedFeatures, localizedCapacityLabel] = await Promise.all([
+      buildLocalizedText(payload.name),
+      buildLocalizedText(payload.category),
+      buildLocalizedList(payload.featuresCsv || 'Confort premium'),
+      buildLocalizedText(`${payload.capacityCount} passagers`),
+    ])
+
+    setVehicleItems((current) => [
+      createVehicleFromAdminInput({
+        ...payload,
+        name: localizedName,
+        category: localizedCategory,
+        features: localizedFeatures,
+        capacityLabel: localizedCapacityLabel,
+      }),
+      ...current,
+    ])
 
     setNewVehicle({
       name: '',
@@ -183,9 +227,12 @@ export function AdminPage() {
       featuresCsv: '',
       imageUrl: '',
     })
+
+    setAdminStatus('Véhicule ajouté avec traduction automatique.')
+    setIsAutoTranslating(false)
   }
 
-  const handleAddExcursion = (event) => {
+  const handleAddExcursion = async (event) => {
     event.preventDefault()
 
     const payload = {
@@ -198,13 +245,33 @@ export function AdminPage() {
       return
     }
 
-    setExcursionItems((current) => [createExcursionFromAdminInput(payload), ...current])
+    setIsAutoTranslating(true)
+    setAdminStatus('Traduction automatique de l excursion en cours...')
+
+    const [localizedName, localizedSummary, localizedPriceEstimate] = await Promise.all([
+      buildLocalizedText(payload.name),
+      buildLocalizedText(payload.summary),
+      buildLocalizedText('Sur devis'),
+    ])
+
+    setExcursionItems((current) => [
+      createExcursionFromAdminInput({
+        ...payload,
+        name: localizedName,
+        summary: localizedSummary,
+        priceEstimate: localizedPriceEstimate,
+      }),
+      ...current,
+    ])
 
     setNewExcursion({
       name: '',
       summary: '',
       imageUrl: '',
     })
+
+    setAdminStatus('Excursion ajoutée avec traduction automatique.')
+    setIsAutoTranslating(false)
   }
 
   return (
@@ -213,6 +280,8 @@ export function AdminPage() {
         title="Administration"
         subtitle="Ajoutez des contenus ici. Les suppressions restent disponibles dans les pages concernées en mode admin."
       />
+
+      {adminStatus ? <p className="admin-dialog-error">{adminStatus}</p> : null}
 
       <div className="admin-page-grid">
         <form className="admin-form" onSubmit={handleAddDriver}>
@@ -264,7 +333,7 @@ export function AdminPage() {
             />
             Disponible
           </label>
-          <button type="submit" className="cta cta-primary">Ajouter le chauffeur</button>
+          <button type="submit" className="cta cta-primary" disabled={isAutoTranslating}>Ajouter le chauffeur</button>
         </form>
 
         <form className="admin-form" onSubmit={handleAddVehicle}>
@@ -304,7 +373,7 @@ export function AdminPage() {
             onChange={(event) => setNewVehicle((current) => ({ ...current, imageUrl: event.target.value }))}
             required
           />
-          <button type="submit" className="cta cta-primary">Ajouter le véhicule</button>
+          <button type="submit" className="cta cta-primary" disabled={isAutoTranslating}>Ajouter le véhicule</button>
         </form>
 
         <form className="admin-form" onSubmit={handleAddExcursion}>
@@ -330,7 +399,7 @@ export function AdminPage() {
             onChange={(event) => setNewExcursion((current) => ({ ...current, imageUrl: event.target.value }))}
             required
           />
-          <button type="submit" className="cta cta-primary">Ajouter l'excursion</button>
+          <button type="submit" className="cta cta-primary" disabled={isAutoTranslating}>Ajouter l'excursion</button>
         </form>
       </div>
     </section>

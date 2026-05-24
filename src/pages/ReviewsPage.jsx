@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
 import { REVIEWS_STORAGE_KEY } from '../utils/adminData'
+import { translateText } from '../utils/autoTranslate'
 import {
   createCloudReview,
   deleteCloudReview,
@@ -61,8 +62,14 @@ export function ReviewsPage() {
   const [message, setMessage] = useState('')
   const [rating, setRating] = useState(5)
   const [syncError, setSyncError] = useState('')
+  const [translatedMessages, setTranslatedMessages] = useState({})
+  const translatedMessagesRef = useRef({})
 
   const locale = useMemo(() => getLocale(language), [language])
+
+  useEffect(() => {
+    translatedMessagesRef.current = translatedMessages
+  }, [translatedMessages])
 
   useEffect(() => {
     let isMounted = true
@@ -195,6 +202,55 @@ export function ReviewsPage() {
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isReviewDialogOpen])
+
+  useEffect(() => {
+    if (language === 'fr' || reviews.length === 0) {
+      return
+    }
+
+    const missingReviews = reviews.filter(
+      (review) => !translatedMessagesRef.current[`${review.id}:${language}`] && review.message,
+    )
+
+    if (missingReviews.length === 0) {
+      return
+    }
+
+    let isMounted = true
+
+    const translateMissingReviews = async () => {
+      const translatedEntries = await Promise.all(
+        missingReviews.map(async (review) => [
+          `${review.id}:${language}`,
+          await translateText(review.message, language, { sourceLanguage: 'fr' }),
+        ]),
+      )
+
+      if (!isMounted) {
+        return
+      }
+
+      setTranslatedMessages((current) => {
+        let didChange = false
+        const next = { ...current }
+
+        for (const [cacheKey, translatedValue] of translatedEntries) {
+          if (!next[cacheKey]) {
+            next[cacheKey] = translatedValue
+            didChange = true
+          }
+        }
+
+        return didChange ? next : current
+      })
+    }
+
+    translateMissingReviews()
+
+    return () => {
+      isMounted = false
+    }
+  }, [reviews, language])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -360,7 +416,7 @@ export function ReviewsPage() {
                 <strong>{review.name}</strong>
                 <span className="review-stars">{'★'.repeat(review.rating)}</span>
               </div>
-              <p>{review.message}</p>
+              <p>{translatedMessages[`${review.id}:${language}`] || review.message}</p>
               <time dateTime={review.createdAt}>
                 {new Date(review.createdAt).toLocaleDateString(locale, {
                   day: '2-digit',
