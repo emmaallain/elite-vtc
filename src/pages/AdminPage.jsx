@@ -250,8 +250,8 @@ export function AdminPage() {
             onChange={(event) => setNewDriver((current) => ({ ...current, languagesCsv: event.target.value }))}
           />
           <input
-            type="url"
-            placeholder="URL photo"
+            type="text"
+            placeholder="URL ou chemin photo"
             value={newDriver.photoUrl}
             onChange={(event) => setNewDriver((current) => ({ ...current, photoUrl: event.target.value }))}
             required
@@ -298,8 +298,8 @@ export function AdminPage() {
             onChange={(event) => setNewVehicle((current) => ({ ...current, featuresCsv: event.target.value }))}
           />
           <input
-            type="url"
-            placeholder="URL image"
+            type="text"
+            placeholder="URL ou chemin image"
             value={newVehicle.imageUrl}
             onChange={(event) => setNewVehicle((current) => ({ ...current, imageUrl: event.target.value }))}
             required
@@ -324,8 +324,8 @@ export function AdminPage() {
             required
           />
           <input
-            type="url"
-            placeholder="URL image"
+            type="text"
+            placeholder="URL ou chemin image"
             value={newExcursion.imageUrl}
             onChange={(event) => setNewExcursion((current) => ({ ...current, imageUrl: event.target.value }))}
             required

@@ -3,7 +3,12 @@ import { SectionHeading } from '../components/SectionHeading'
 import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
 import { REVIEWS_STORAGE_KEY } from '../utils/adminData'
-import { readCloudArray, writeCloudArray } from '../utils/cloudStorage'
+import {
+  createCloudReview,
+  deleteCloudReview,
+  getSupabaseClient,
+  readCloudReviews,
+} from '../utils/cloudStorage'
 
 const DEFAULT_REVIEWS = [
   {
@@ -48,12 +53,14 @@ function getLocale(language) {
 export function ReviewsPage() {
   const { t, language } = useTranslation()
   const { isAdmin } = useAdmin()
+  const supabase = getSupabaseClient()
   const [reviews, setReviews] = useState([])
   const [isSyncedReady, setIsSyncedReady] = useState(false)
   const [isReviewDialogOpen, setIsReviewDialogOpen] = useState(false)
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [rating, setRating] = useState(5)
+  const [syncError, setSyncError] = useState('')
 
   const locale = useMemo(() => getLocale(language), [language])
 
@@ -82,7 +89,7 @@ export function ReviewsPage() {
 
       setReviews(localReviews)
 
-      const cloudReviews = await readCloudArray(REVIEWS_STORAGE_KEY)
+      const cloudReviews = await readCloudReviews()
 
       if (!isMounted) {
         return
@@ -108,8 +115,71 @@ export function ReviewsPage() {
     }
 
     localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(reviews))
-    writeCloudArray(REVIEWS_STORAGE_KEY, reviews)
   }, [reviews, isSyncedReady])
+
+  useEffect(() => {
+    if (!isSyncedReady || !supabase) {
+      return undefined
+    }
+
+    const channel = supabase
+      .channel('elite-vtc-reviews-sync')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'elite_reviews',
+        },
+        async () => {
+          const nextReviews = await readCloudReviews()
+
+          if (!Array.isArray(nextReviews)) {
+            return
+          }
+
+          setReviews(nextReviews)
+        },
+      )
+      .subscribe()
+
+    return () => {
+      supabase.removeChannel(channel)
+    }
+  }, [isSyncedReady, supabase])
+
+  useEffect(() => {
+    if (!isSyncedReady || !supabase) {
+      return undefined
+    }
+
+    let isMounted = true
+
+    const syncFromCloud = async () => {
+      const cloudReviews = await readCloudReviews()
+
+      if (!isMounted || !Array.isArray(cloudReviews)) {
+        return
+      }
+
+      setReviews((currentReviews) => {
+        if (JSON.stringify(currentReviews) === JSON.stringify(cloudReviews)) {
+          return currentReviews
+        }
+
+        return cloudReviews
+      })
+    }
+
+    syncFromCloud()
+
+    const intervalId = window.setInterval(syncFromCloud, 10000)
+
+    return () => {
+      isMounted = false
+      window.clearInterval(intervalId)
+    }
+  }, [isSyncedReady, supabase])
 
   useEffect(() => {
     if (!isReviewDialogOpen) {
@@ -126,7 +196,7 @@ export function ReviewsPage() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isReviewDialogOpen])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     const cleanName = name.trim()
@@ -144,15 +214,35 @@ export function ReviewsPage() {
       createdAt: new Date().toISOString(),
     }
 
-    setReviews((current) => [review, ...current])
+    const nextReviews = [review, ...reviews]
+    setSyncError('')
+    setReviews(nextReviews)
     setName('')
     setMessage('')
     setRating(5)
     setIsReviewDialogOpen(false)
+
+    const didWriteCloud = await createCloudReview(review)
+
+    if (!didWriteCloud && supabase) {
+      setReviews((current) => current.filter((item) => item.id !== review.id))
+      setSyncError('Synchronisation impossible avec Supabase pour cet avis.')
+    }
   }
 
-  const handleDeleteReview = (reviewId) => {
-    setReviews((current) => current.filter((review) => review.id !== reviewId))
+  const handleDeleteReview = async (reviewId) => {
+    const previousReviews = reviews
+    const nextReviews = previousReviews.filter((review) => review.id !== reviewId)
+
+    setSyncError('')
+    setReviews(nextReviews)
+
+    const didDeleteCloud = await deleteCloudReview(reviewId)
+
+    if (!didDeleteCloud && supabase) {
+      setReviews(previousReviews)
+      setSyncError('Suppression impossible dans Supabase pour cet avis.')
+    }
   }
 
   const reviewOpenLabel =
@@ -187,6 +277,8 @@ export function ReviewsPage() {
       >
         {reviewOpenLabel}
       </button>
+
+      {syncError ? <p className="admin-dialog-error">{syncError}</p> : null}
 
       {isReviewDialogOpen ? (
         <div

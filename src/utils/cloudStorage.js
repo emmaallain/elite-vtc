@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL?.trim()
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim()
 const TABLE_NAME = 'elite_app_state'
+const REVIEWS_TABLE_NAME = 'elite_reviews'
 const SUPABASE_SINGLETON_KEY = '__eliteVtcSupabaseClient__'
 
 function isValidHttpUrl(value) {
@@ -89,7 +90,7 @@ export async function readCloudArray(datasetKey) {
 
 export async function writeCloudArray(datasetKey, payload) {
   if (!supabase) {
-    return
+    return false
   }
 
   const { error } = await supabase.from(TABLE_NAME).upsert(
@@ -103,5 +104,68 @@ export async function writeCloudArray(datasetKey, payload) {
 
   if (error) {
     console.error('Cloud write failed:', error)
+    return false
   }
+
+  return true
+}
+
+export async function readCloudReviews() {
+  if (!supabase) {
+    return null
+  }
+
+  const { data, error } = await supabase
+    .from(REVIEWS_TABLE_NAME)
+    .select('id, name, message, rating, created_at')
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('Cloud reviews read failed:', error)
+    return null
+  }
+
+  return data.map((review) => ({
+    id: review.id,
+    name: review.name,
+    message: review.message,
+    rating: review.rating,
+    createdAt: review.created_at,
+  }))
+}
+
+export async function createCloudReview(review) {
+  if (!supabase) {
+    return false
+  }
+
+  const { error } = await supabase.from(REVIEWS_TABLE_NAME).insert({
+    id: review.id,
+    name: review.name,
+    message: review.message,
+    rating: review.rating,
+    created_at: review.createdAt,
+  })
+
+  if (error) {
+    console.error('Cloud review create failed:', error)
+    return false
+  }
+
+  return true
+}
+
+export async function deleteCloudReview(reviewId) {
+  if (!supabase) {
+    return false
+  }
+
+  const { error } = await supabase.from(REVIEWS_TABLE_NAME).delete().eq('id', reviewId)
+
+  if (error) {
+    console.error('Cloud review delete failed:', error)
+    return false
+  }
+
+  return true
 }
