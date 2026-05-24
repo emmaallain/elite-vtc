@@ -10,7 +10,7 @@ const unitLabelByLanguage = {
   fr: {
     trip: 'par trajet',
     hour: 'par heure',
-    day: 'par journee',
+    day: 'par journée',
   },
   en: {
     trip: 'per trip',

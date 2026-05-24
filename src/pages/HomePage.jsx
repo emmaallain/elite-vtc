@@ -178,7 +178,7 @@ export function HomePage() {
                 type="button"
                 className="home-banner-button carousel-button"
                 onClick={() => setCurrentBanner((current) => Math.max(current - 1, 0))}
-                aria-label={language === 'fr' ? 'Image precedente' : 'Previous image'}
+                aria-label={language === 'fr' ? 'Image précédente' : 'Previous image'}
               >
                 ←
               </button>
@@ -204,7 +204,7 @@ export function HomePage() {
                 type="button"
                 className={`home-banner-dot ${index === currentBanner ? 'home-banner-dot-active' : ''}`}
                 onClick={() => setCurrentBanner(index)}
-                aria-label={language === 'fr' ? `Aller a l image ${index + 1}` : `Go to image ${index + 1}`}
+                aria-label={language === 'fr' ? `Aller à l'image ${index + 1}` : `Go to image ${index + 1}`}
               />
             ))}
           </div>

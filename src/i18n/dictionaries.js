@@ -3,27 +3,27 @@ export const dictionaries = {
     nav: {
       home: 'Accueil',
       drivers: 'Chauffeurs',
-      vehicles: 'Vehicules',
+      vehicles: 'Véhicules',
       services: 'Services',
       pricing: 'Tarifs',
       contact: 'Contact',
-      booking: 'Reservation',
+      booking: 'Réservation',
       quote: 'Devis',
     },
     hero: {
-      eyebrow: 'Transport prive premium',
+      eyebrow: 'Transport privé premium',
       title: 'Luxe discret, service impeccable',
       subtitle:
-        'Deux chauffeurs VTC professionnels a votre disposition pour vos trajets personnels, professionnels et evenements.',
+        'Deux chauffeurs VTC professionnels à votre disposition pour vos trajets personnels, professionnels et événements.',
       ctaPrimary: 'Contacter sur WhatsApp',
-      ctaSecondary: 'Decouvrir nos services',
+      ctaSecondary: 'Découvrir nos services',
     },
     trust: {
       title: 'Pourquoi nous faire confiance',
       items: [
-        'Ponctualite et presentation irreprochable',
-        'Vehicules haut de gamme entretenus',
-        'Transparence et fiabilite a chaque trajet',
+        'Ponctualité et présentation irréprochable',
+        'Véhicules haut de gamme entretenus',
+        'Transparence et fiabilité à chaque trajet',
       ],
       stats: [
         {
@@ -31,13 +31,13 @@ export const dictionaries = {
           value: 500,
           suffix: '+',
           icon: 'group',
-          label: 'Clients accompagnes',
+          label: 'Clients accompagnés',
         },
         {
           id: 'countries',
           value: 5,
           icon: 'public',
-          label: 'Pays visites',
+          label: 'Pays visités',
         },
         {
           id: 'onTime',
@@ -58,7 +58,7 @@ export const dictionaries = {
           value: 100,
           suffix: '%',
           icon: 'translate',
-          label: 'Drivers bilingues',
+          label: 'Chauffeurs bilingues',
         },
       ],
     },
@@ -71,41 +71,41 @@ export const dictionaries = {
     },
     common: {
       readMore: 'En savoir plus',
-      from: 'A partir de',
+      from: 'À partir de',
       perTrip: 'par trajet',
       perHour: 'par heure',
-      perDay: 'par journee',
+      perDay: 'par journée',
       available: 'Disponible',
-      unavailable: 'Occupe',
-      whatsappNow: 'WhatsApp immediate',
+      unavailable: 'Occupé',
+      whatsappNow: 'WhatsApp immédiat',
       bilingual: 'FR / EN',
       themeLight: 'Mode clair',
       themeDark: 'Mode sombre',
       gallery: 'Galerie',
-      comingSoon: 'Bientot disponible',
+      comingSoon: 'Bientôt disponible',
       futureFeature:
-        'Cette fonctionnalite sera activee dans une prochaine version.',
+        'Cette fonctionnalité sera activée dans une prochaine version.',
       requestQuote: 'Demander un devis',
-      requestBooking: 'Demarrer une reservation',
+      requestBooking: 'Démarrer une réservation',
       onRequest: 'Sur devis',
     },
     pages: {
-      servicesEyebrow: 'Mobilite sur mesure',
+      servicesEyebrow: 'Mobilité sur mesure',
       driversIntro:
-        'Chaque chauffeur allie discretion, courtoisie et parfaite connaissance des itineraires urbains et longue distance.',
+        'Chaque chauffeur allie discrétion, courtoisie et parfaite connaissance des itinéraires urbains et longue distance.',
       vehiclesIntro:
-        'Une flotte selectionnee pour le confort, l elegance et la securite de vos deplacements.',
+        'Une flotte sélectionnée pour le confort, l’élégance et la sécurité de vos déplacements.',
       servicesIntro:
-        'Des prestations pensees pour les particuliers exigeants et les professionnels qui attendent un service sans compromis.',
-      excursionsTitle: 'Excursions Possibles',
+        'Des prestations pensées pour les particuliers exigeants et les professionnels qui attendent un service sans compromis.',
+      excursionsTitle: 'Excursions possibles',
       excursionsIntro:
-        'Destinations populaires pour une journee ou demi-journee avec chauffeur prive. Prix indicatifs calcules depuis Cannes (et d autres destinations sont possibles selon vos envies: Italie, Espagne, Marseille, etc.).',
+        'Destinations populaires pour une journée ou demi-journée avec chauffeur privé. Prix indicatifs calculés depuis Cannes (et d’autres destinations sont possibles selon vos envies: Italie, Espagne, Marseille, etc.).',
       pricingIntro:
-        'Ces prix sont indicatifs. Un tarif final est confirme selon distance, horaire et conditions de circulation.',
+        'Ces prix sont indicatifs. Un tarif final est confirmé selon distance, horaire et conditions de circulation.',
       contactIntro:
-        'Un seul contact WhatsApp pour des reponses rapides et un suivi centralise.',
+        'Un seul contact WhatsApp pour des réponses rapides et un suivi centralisé.',
       footerNote:
-        'Site beta evolutif: reservation en ligne et creation de devis arrive bientot.',
+        'Site bêta évolutif: réservation en ligne et création de devis arrivent bientôt.',
     },
   },
   en: {

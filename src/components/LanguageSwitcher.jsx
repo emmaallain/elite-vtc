@@ -9,8 +9,8 @@ export function LanguageSwitcher() {
         type="button"
         className={`lang-option ${language === 'fr' ? 'lang-option-active' : ''}`}
         onClick={() => setLanguage('fr')}
-        aria-label="Francais"
-        title="Francais"
+        aria-label="Français"
+        title="Français"
       >
         <span aria-hidden="true" className="lang-flag">🇫🇷</span>
       </button>

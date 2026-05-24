@@ -19,17 +19,17 @@ export const excursions = [
       {
         ...getMediaSource('excursions/monaco-1.jpeg', { width: 1400 }),
         alt: {
-          fr: 'Vue supplementaire de Monaco',
+          fr: 'Vue supplémentaire de Monaco',
           en: 'Additional Monaco view',
         },
       },
     ],
     summary: {
-      fr: 'Une escapade elegante entre le Rocher, le Casino et les plus belles vues de la Principaute.',
+      fr: 'Une escapade élégante entre le Rocher, le Casino et les plus belles vues de la Principauté.',
       en: 'An elegant escape between the Rock, the Casino and the finest views across the Principality.',
     },
     priceEstimate: {
-      fr: 'Des 180 EUR',
+      fr: 'Dès 180 EUR',
       en: 'From EUR 180',
     },
   },
@@ -64,11 +64,11 @@ export const excursions = [
       },
     ],
     summary: {
-      fr: 'Une decouverte douce entre front de mer, vieille ville coloree et haltes panoramiques.',
+      fr: 'Une découverte douce entre front de mer, vieille ville colorée et haltes panoramiques.',
       en: 'A smooth discovery through the seafront, colorful old town and panoramic stops.',
     },
     priceEstimate: {
-      fr: 'Des 120 EUR',
+      fr: 'Dès 120 EUR',
       en: 'From EUR 120',
     },
   },
@@ -90,7 +90,7 @@ export const excursions = [
       {
         ...getMediaSource('excursions/cannes-1.jpeg', { width: 1400 }),
         alt: {
-          fr: 'Ambiance supplementaire a Cannes',
+          fr: 'Ambiance supplémentaire à Cannes',
           en: 'Additional Cannes scenery',
         },
       },
@@ -100,7 +100,7 @@ export const excursions = [
       en: 'A refined outing between palaces, boutiques, the Croisette and the iconic waterfront.',
     },
     priceEstimate: {
-      fr: 'Des 170 EUR',
+      fr: 'Dès 170 EUR',
       en: 'From EUR 170',
     },
   },
@@ -122,24 +122,24 @@ export const excursions = [
       {
         ...getMediaSource('excursions/sttropez-&.jpeg', { width: 1400 }),
         alt: {
-          fr: 'Vue supplementaire de Saint-Tropez',
+          fr: 'Vue supplémentaire de Saint-Tropez',
           en: 'Additional Saint-Tropez view',
         },
       },
     ],
     summary: {
-      fr: 'Une excursion signature pour profiter du port, des ruelles et de l atmosphere iconique de la cote.',
+      fr: 'Une excursion signature pour profiter du port, des ruelles et de l atmosphère iconique de la côte.',
       en: 'A signature excursion to enjoy the harbor, narrow streets and iconic Riviera atmosphere.',
     },
     priceEstimate: {
-      fr: 'Des 390 EUR',
+      fr: 'Dès 390 EUR',
       en: 'From EUR 390',
     },
   },
   {
     id: 'eze-village-panoramique',
     name: {
-      fr: 'Eze et village panoramique',
+      fr: 'Èze et village panoramique',
       en: 'Eze and panoramic village',
     },
     image: getMediaSource('excursions/EZE.jpeg', { width: 960 }),
@@ -147,24 +147,24 @@ export const excursions = [
       {
         ...getMediaSource('excursions/EZE.jpeg', { width: 1400 }),
         alt: {
-          fr: 'Village d Eze et panorama',
+          fr: 'Village d Èze et panorama',
           en: 'Eze village and panorama',
         },
       },
       {
         ...getMediaSource('excursions/eze-1.jpeg', { width: 1400 }),
         alt: {
-          fr: 'Autre vue panoramique d Eze',
+          fr: 'Autre vue panoramique d Èze',
           en: 'Another panoramic view of Eze',
         },
       },
     ],
     summary: {
-      fr: 'Un itineraire panoramique entre village perche, ruelles de caractere et vues spectaculaires.',
+      fr: 'Un itinéraire panoramique entre village perché, ruelles de caractère et vues spectaculaires.',
       en: 'A panoramic route through the hilltop village, character-filled lanes and spectacular views.',
     },
     priceEstimate: {
-      fr: 'Des 150 EUR',
+      fr: 'Dès 150 EUR',
       en: 'From EUR 150',
     },
   },

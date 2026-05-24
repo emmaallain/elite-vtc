@@ -24,7 +24,7 @@ export const vehicles = [
     capacity: { fr: '7 passagers', en: '7 passengers' },
     capacityCount: 7,
     features: {
-      fr: ['Interieur cuir', 'Eau a bord', 'Chargeurs'],
+      fr: ['Intérieur cuir', 'Eau à bord', 'Chargeurs'],
       en: ['Leather interior', 'Water on board', 'Charging ports'],
     },
     gallery: [
@@ -36,7 +36,7 @@ export const vehicles = [
       {
         src: vehicleInterior.src,
         fallbackSrc: vehicleInterior.fallbackSrc,
-        alt: { fr: 'Mercedes Classe V interieur', en: 'Mercedes V-Class interior' },
+        alt: { fr: 'Mercedes Classe V intérieur', en: 'Mercedes V-Class interior' },
       },
     ],
   },
@@ -47,7 +47,7 @@ export const vehicles = [
     capacity: { fr: '7 passagers', en: '7 passengers' },
     capacityCount: 7,
     features: {
-      fr: ['Interieur cuir', 'Eau a bord', 'Chargeurs'],
+      fr: ['Intérieur cuir', 'Eau à bord', 'Chargeurs'],
       en: ['Leather interior', 'Water on board', 'Charging ports'],
     },
     gallery: [
@@ -59,7 +59,7 @@ export const vehicles = [
       {
         src: vehicleInterior.src,
         fallbackSrc: vehicleInterior.fallbackSrc,
-        alt: { fr: 'Mercedes Classe V interieur', en: 'Mercedes V-Class interior' },
+        alt: { fr: 'Mercedes Classe V intérieur', en: 'Mercedes V-Class interior' },
       },
     ],
   },

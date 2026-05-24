@@ -12,8 +12,8 @@ function RobotIcon({ className }) {
 const chatContent = {
   fr: {
     title: 'Robot Assistant Elite VTC',
-    subtitle: 'Reponse rapide',
-    message: 'Bonjour, besoin d aide pour une reservation ou un devis ?',
+    subtitle: 'Réponse rapide',
+    message: 'Bonjour, besoin d’aide pour une réservation ou un devis ?',
     call: 'Appeler',
     email: 'Email',
     quote: 'Devis',
