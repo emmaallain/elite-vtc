@@ -48,6 +48,7 @@ export function ReviewsPage() {
   const { t, language } = useTranslation()
   const { isAdmin } = useAdmin()
   const [reviews, setReviews] = useState([])
+  const [isReviewDialogOpen, setIsReviewDialogOpen] = useState(false)
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [rating, setRating] = useState(5)
@@ -82,6 +83,21 @@ export function ReviewsPage() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews))
   }, [reviews])
 
+  useEffect(() => {
+    if (!isReviewDialogOpen) {
+      return undefined
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsReviewDialogOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isReviewDialogOpen])
+
   const handleSubmit = (event) => {
     event.preventDefault()
 
@@ -101,13 +117,33 @@ export function ReviewsPage() {
     }
 
     setReviews((current) => [review, ...current])
+    setName('')
     setMessage('')
     setRating(5)
+    setIsReviewDialogOpen(false)
   }
 
   const handleDeleteReview = (reviewId) => {
     setReviews((current) => current.filter((review) => review.id !== reviewId))
   }
+
+  const reviewOpenLabel =
+    language === 'fr'
+      ? 'Laisser un avis'
+      : language === 'ru'
+        ? 'Оставить отзыв'
+        : language === 'ar'
+          ? 'أضف رأيك'
+          : 'Write a review'
+
+  const reviewDialogTitle =
+    language === 'fr'
+      ? 'Votre avis'
+      : language === 'ru'
+        ? 'Ваш отзыв'
+        : language === 'ar'
+          ? 'رأيك'
+          : 'Your review'
 
   return (
     <section className="panel reviews-panel">
@@ -116,48 +152,83 @@ export function ReviewsPage() {
         subtitle={t.pages.reviewsIntro}
       />
 
-      <form className="reviews-form" onSubmit={handleSubmit}>
-        <label htmlFor="review-name">{t.pages.reviewsNameLabel}</label>
-        <input
-          id="review-name"
-          type="text"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          placeholder={t.pages.reviewsNamePlaceholder}
-          required
-        />
+      <button
+        type="button"
+        className="cta cta-primary review-open-button"
+        onClick={() => setIsReviewDialogOpen(true)}
+      >
+        {reviewOpenLabel}
+      </button>
 
-        <span id="review-rating-label">{t.pages.reviewsRatingLabel}</span>
-        <div className="reviews-rating-stars" role="radiogroup" aria-labelledby="review-rating-label">
-          {[1, 2, 3, 4, 5].map((value) => (
-            <button
-              key={value}
-              type="button"
-              className={`review-star-button ${value <= rating ? 'is-active' : ''}`}
-              onClick={() => setRating(value)}
-              role="radio"
-              aria-checked={value === rating}
-              aria-label={`${value} ${value > 1 ? 'stars' : 'star'}`}
-            >
-              ★
-            </button>
-          ))}
+      {isReviewDialogOpen ? (
+        <div
+          className="review-dialog-overlay"
+          role="presentation"
+          onClick={() => setIsReviewDialogOpen(false)}
+        >
+          <section
+            className="review-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="review-dialog-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <h3 id="review-dialog-title">{reviewDialogTitle}</h3>
+
+            <form className="reviews-form" onSubmit={handleSubmit}>
+              <label htmlFor="review-name">{t.pages.reviewsNameLabel}</label>
+              <input
+                id="review-name"
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder={t.pages.reviewsNamePlaceholder}
+                required
+              />
+
+              <span id="review-rating-label">{t.pages.reviewsRatingLabel}</span>
+              <div className="reviews-rating-stars" role="radiogroup" aria-labelledby="review-rating-label">
+                {[1, 2, 3, 4, 5].map((value) => (
+                  <button
+                    key={value}
+                    type="button"
+                    className={`review-star-button ${value <= rating ? 'is-active' : ''}`}
+                    onClick={() => setRating(value)}
+                    role="radio"
+                    aria-checked={value === rating}
+                    aria-label={`${value} ${value > 1 ? 'stars' : 'star'}`}
+                  >
+                    ★
+                  </button>
+                ))}
+              </div>
+
+              <label htmlFor="review-message">{t.pages.reviewsMessageLabel}</label>
+              <textarea
+                id="review-message"
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                placeholder={t.pages.reviewsMessagePlaceholder}
+                rows={4}
+                required
+              />
+
+              <div className="review-dialog-actions">
+                <button
+                  type="button"
+                  className="cta cta-secondary"
+                  onClick={() => setIsReviewDialogOpen(false)}
+                >
+                  {language === 'fr' ? 'Annuler' : language === 'ru' ? 'Отмена' : language === 'ar' ? 'إلغاء' : 'Cancel'}
+                </button>
+                <button type="submit" className="cta cta-primary">
+                  {t.pages.reviewsSubmitCta}
+                </button>
+              </div>
+            </form>
+          </section>
         </div>
-
-        <label htmlFor="review-message">{t.pages.reviewsMessageLabel}</label>
-        <textarea
-          id="review-message"
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
-          placeholder={t.pages.reviewsMessagePlaceholder}
-          rows={4}
-          required
-        />
-
-        <button type="submit" className="cta cta-primary">
-          {t.pages.reviewsSubmitCta}
-        </button>
-      </form>
+      ) : null}
 
       <div className="reviews-list">
         {reviews.length === 0 ? (
