@@ -1785,13 +1785,28 @@ main {
     padding: 0.85rem;
   }
 
-  .excursion-dialog-close {
-    justify-self: stretch;
+  .excursion-dialog-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: stretch;
+    gap: 0.42rem;
   }
 
-  .excursion-dialog-actions {
-    display: grid;
-    grid-template-columns: 1fr;
+  .excursion-contact-button {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: center;
+    padding-inline: 0.62rem;
+    font-size: 0.82rem;
+  }
+
+  .excursion-dialog-close {
+    flex: 0 0 auto;
+    justify-self: auto;
+    min-width: 4.4rem;
+    padding: 0.4rem 0.56rem;
+    font-size: 0.78rem;
   }
 
   .driver-grid {
