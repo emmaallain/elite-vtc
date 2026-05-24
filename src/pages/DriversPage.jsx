@@ -1,10 +1,27 @@
+import { useEffect, useState } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 import { ImageWithLoader } from '../components/ImageWithLoader'
 import { drivers } from '../data/drivers'
+import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
+import { DRIVERS_STORAGE_KEY, getStoredArray, setStoredArray } from '../utils/adminData'
 
 export function DriversPage() {
-  const { t, language, contentLanguage } = useTranslation()
+  const { t, contentLanguage } = useTranslation()
+  const { isAdmin } = useAdmin()
+  const [driverItems, setDriverItems] = useState(drivers)
+
+  useEffect(() => {
+    setDriverItems(getStoredArray(DRIVERS_STORAGE_KEY, drivers))
+  }, [])
+
+  useEffect(() => {
+    setStoredArray(DRIVERS_STORAGE_KEY, driverItems)
+  }, [driverItems])
+
+  const handleDeleteDriver = (driverId) => {
+    setDriverItems((current) => current.filter((driver) => driver.id !== driverId))
+  }
 
   return (
     <section className="panel">
@@ -14,7 +31,7 @@ export function DriversPage() {
       />
 
       <div className="card-grid driver-grid">
-        {drivers.map((driver) => (
+        {driverItems.map((driver) => (
           <article key={driver.id} className="card driver-card">
             <div className="portrait-frame">
               <ImageWithLoader
@@ -35,6 +52,16 @@ export function DriversPage() {
                 <span className="badge-dot"></span>
                 {driver.availability ? t.common.available : t.common.unavailable}
               </p>
+
+              {isAdmin ? (
+                <button
+                  type="button"
+                  className="admin-action-button"
+                  onClick={() => handleDeleteDriver(driver.id)}
+                >
+                  Supprimer ce chauffeur
+                </button>
+              ) : null}
             </div>
           </article>
         ))}

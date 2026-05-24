@@ -8,6 +8,7 @@ export const dictionaries = {
       concierge: 'Conciergerie',
       yachting: 'Yachting',
       partners: 'Partenaires',
+      reviews: 'Avis',
       pricing: 'Tarifs',
       contact: 'Contact',
       booking: 'Réservation',
@@ -72,6 +73,7 @@ export const dictionaries = {
       concierge: 'Conciergerie',
       yachting: 'Yachting',
       partners: 'Partenaires',
+      reviews: 'Laisser un avis',
       pricing: 'Tarifs Indicatifs',
       contact: 'Contact Direct',
     },
@@ -111,39 +113,65 @@ export const dictionaries = {
       servicesQuoteOnlyNote:
         'Tarifs communiqués uniquement sur devis ou après contact avec nos chauffeurs.',
       excursionsTapHint:
-        'Chaque excursion est cliquable pour voir les détails.',
-      excursionOpenCta: 'Voir les détails',
+        'Sélectionnez une excursion pour découvrir le programme en détail.',
+      excursionOpenCta: 'Découvrir l’expérience',
       excursionCloseCta: 'Fermer',
-      excursionWhatYouCanDoTitle: 'Ce que vous pouvez faire',
+      excursionWhatYouCanDoTitle: 'Expérience proposée',
       excursionWhatYouCanDoItems: [
-        'Adapter le rythme selon vos envies',
-        'Prévoir des arrêts photo et panoramas',
-        'Organiser du temps libre pour visites ou shopping',
+        'Rythme de la journée adapté à vos préférences',
+        'Arrêts panoramiques et temps photo sur demande',
+        'Temps libre dédié aux visites ou au shopping',
       ],
       excursionPopupContactHint:
-        'Programme final, durée et itinéraire personnalisés après échange avec votre chauffeur.',
-      excursionContactCta: 'Contacter pour cette excursion',
+        'Itinéraire, durée et prestations sont ajustés après échange avec votre chauffeur-conseil.',
+      excursionContactCta: 'Contacter notre conciergerie',
       excursionPreparedMessage:
         'Bonjour, je souhaite organiser l\'excursion {excursion}. Pouvez-vous me proposer un programme et un devis ?',
       contactIntro:
         'Un seul contact WhatsApp pour des réponses rapides et un suivi centralisé.',
       conciergeIntro:
         'Un accompagnement premium pour simplifier votre séjour sur la Côte d’Azur.',
+      conciergeTapHint:
+        'Sélectionnez une option pour consulter les prestations incluses.',
+      conciergeOpenCta: 'Consulter l’offre',
+      conciergeCloseCta: 'Fermer',
+      conciergeWhatIncludedTitle: 'Prestations proposées',
+      conciergePopupContactHint:
+        'Chaque prestation est orchestrée sur mesure selon vos priorités, vos délais et votre niveau d’exigence.',
+      conciergeContactCta: 'Échanger avec la conciergerie',
+      conciergePreparedMessage:
+        'Bonjour, je souhaite organiser la prestation de conciergerie {service}. Pouvez-vous me proposer une solution premium et sur mesure ?',
       conciergeItems: [
         {
-          title: 'Réservations VIP',
+          title: 'Réservations personnalisées',
           description:
-            'Restaurants, beach clubs, événements privés et expériences exclusives.',
+            'Pilotage complet de vos réservations privées et expériences haut de gamme.',
+          proposals: [
+            'Tables gastronomiques et adresses exclusives',
+            'Beach clubs, événements privés et accès privilégiés',
+            'Planification optimisée selon votre agenda',
+          ],
         },
         {
-          title: 'Organisation sur mesure',
+          title: 'Services privés sur mesure',
           description:
-            'Gestion de planning, demandes spéciales et coordination en temps réel.',
+            'Assistance opérationnelle privée pour vos demandes quotidiennes, sensibles ou urgentes.',
+          proposals: [
+            'Envoi de colis privés',
+            'Prise en charge et suivi des bagages',
+            'Courses confidentielles et achats personnels',
+            'Coordination du personnel et des intervenants',
+          ],
         },
         {
           title: 'Assistance 7j/7',
           description:
-            'Une équipe disponible pour anticiper vos besoins pendant tout votre séjour.',
+            'Une équipe dédiée reste disponible tout au long de votre séjour.',
+          proposals: [
+            'Suivi quotidien de vos priorités',
+            'Réactivité immédiate en cas d’imprévu',
+            'Interlocuteur unique pendant toute la prestation',
+          ],
         },
       ],
       yachtingIntro:
@@ -167,21 +195,57 @@ export const dictionaries = {
       ],
       partnersIntro:
         'Nous collaborons avec des partenaires de confiance pour offrir une expérience complète.',
+      partnerTapHint:
+        'Sélectionnez un partenaire pour découvrir les modalités de collaboration.',
+      partnerWhatIncludedTitle: 'Modalités de collaboration',
+      partnerOpenCta: 'En savoir plus',
+      partnerCloseCta: 'Fermer',
+      partnerContactCta: 'Contacter à propos de ce partenariat',
+      partnerPopupContactHint:
+        'Chaque partenariat est construit selon vos standards de service, votre planning et vos objectifs opérationnels.',
+      partnerPreparedMessage:
+        'Bonjour, je souhaite échanger concernant le partenariat {partner}. Pouvez-vous me recontacter ?',
+      reviewsIntro:
+        'Partagez votre expérience. Votre avis apparaît immédiatement sur la page.',
+      reviewsNameLabel: 'Votre nom',
+      reviewsNamePlaceholder: 'Ex: Sophie Martin',
+      reviewsRatingLabel: 'Votre note',
+      reviewsMessageLabel: 'Votre avis',
+      reviewsMessagePlaceholder:
+        'Décrivez votre expérience avec notre service en quelques lignes...',
+      reviewsSubmitCta: 'Publier mon avis',
+      reviewsEmpty:
+        'Aucun avis pour le moment. Soyez le premier à partager votre expérience.',
       partnersItems: [
         {
           title: 'Hôtellerie de luxe',
           description:
             'Synergies avec hôtels, villas et résidences premium pour un service fluide.',
+          proposals: [
+            'Accueil VIP et transferts coordonnés',
+            'Gestion des demandes clients en temps réel',
+            'Interlocuteur dédié pour le staff et la conciergerie',
+          ],
         },
         {
           title: 'Événementiel',
           description:
             'Coordination avec agences et organisateurs pour déplacements VIP et staff.',
+          proposals: [
+            'Plan de transport multi-sites et timing maîtrisé',
+            'Coordination chauffeurs, invités et équipes terrain',
+            'Support opérationnel avant, pendant et après événement',
+          ],
         },
         {
           title: 'Agences de voyage',
           description:
             'Partenariats B2B pour itinéraires sur mesure et suivi personnalisé des clients.',
+          proposals: [
+            'Itinéraires premium adaptés au profil voyageur',
+            'Suivi de mission avec reporting clair',
+            'Qualité de service homogène sur toute la prestation',
+          ],
         },
       ],
       contactPhoneLabel: 'Téléphone',
@@ -202,6 +266,7 @@ export const dictionaries = {
       concierge: 'Concierge',
       yachting: 'Yachting',
       partners: 'Partners',
+      reviews: 'Reviews',
       pricing: 'Pricing',
       contact: 'Contact',
       booking: 'Booking',
@@ -266,6 +331,7 @@ export const dictionaries = {
       concierge: 'Concierge',
       yachting: 'Yachting',
       partners: 'Partners',
+      reviews: 'Leave a Review',
       pricing: 'Indicative Pricing',
       contact: 'Direct Contact',
     },
@@ -322,21 +388,47 @@ export const dictionaries = {
         'A single WhatsApp contact for fast responses and centralized follow-up.',
       conciergeIntro:
         'Premium assistance to simplify your stay on the French Riviera.',
+      conciergeTapHint:
+        'Each concierge option is clickable to view the proposals.',
+      conciergeOpenCta: 'View proposals',
+      conciergeCloseCta: 'Close',
+      conciergeWhatIncludedTitle: 'Available proposals',
+      conciergePopupContactHint:
+        'Each service is tailored to your priorities, timeline and preferences.',
+      conciergeContactCta: 'Contact about this option',
+      conciergePreparedMessage:
+        'Hello, I would like to organize the concierge service {service}. Could you propose a tailored solution?',
       conciergeItems: [
         {
-          title: 'VIP Bookings',
+          title: 'Personalized bookings',
           description:
-            'Restaurants, beach clubs, private events and exclusive experiences.',
+            'Complete handling of your private bookings and tailored experiences.',
+          proposals: [
+            'Restaurants and exclusive venues',
+            'Beach clubs and private events',
+            'Bookings aligned with your schedule',
+          ],
         },
         {
-          title: 'Tailored Planning',
+          title: 'Personalized services',
           description:
-            'Schedule management, special requests and real-time coordination.',
+            'Private operational assistance for your daily and urgent requests.',
+          proposals: [
+            'Private parcel delivery',
+            'Luggage handling',
+            'Errands and personal shopping',
+            'Staff coordination',
+          ],
         },
         {
           title: '7-Day Support',
           description:
             'A dedicated team available to anticipate your needs throughout your stay.',
+          proposals: [
+            'Daily follow-up of your needs',
+            'Fast response for last-minute changes',
+            'Single point of contact throughout your stay',
+          ],
         },
       ],
       yachtingIntro:
@@ -360,21 +452,57 @@ export const dictionaries = {
       ],
       partnersIntro:
         'We work with trusted partners to deliver a complete premium experience.',
+      partnerTapHint:
+        'Select a partner to discover the collaboration framework.',
+      partnerWhatIncludedTitle: 'Collaboration framework',
+      partnerOpenCta: 'Learn more',
+      partnerCloseCta: 'Close',
+      partnerContactCta: 'Contact about this partnership',
+      partnerPopupContactHint:
+        'Each partnership is structured around your service standards, timeline and operational goals.',
+      partnerPreparedMessage:
+        'Hello, I would like to discuss the {partner} partnership. Could you contact me?',
+      reviewsIntro:
+        'Share your experience. Your review appears instantly on the page.',
+      reviewsNameLabel: 'Your name',
+      reviewsNamePlaceholder: 'Example: Sophie Martin',
+      reviewsRatingLabel: 'Your rating',
+      reviewsMessageLabel: 'Your review',
+      reviewsMessagePlaceholder:
+        'Describe your experience with our service in a few lines...',
+      reviewsSubmitCta: 'Publish review',
+      reviewsEmpty:
+        'No reviews yet. Be the first to share your experience.',
       partnersItems: [
         {
           title: 'Luxury Hospitality',
           description:
             'Strong collaboration with hotels, villas and premium residences.',
+          proposals: [
+            'VIP arrivals and coordinated transfers',
+            'Real-time handling of guest requests',
+            'Dedicated contact for staff and concierge teams',
+          ],
         },
         {
           title: 'Events Industry',
           description:
             'Coordination with agencies and planners for VIP and staff transport.',
+          proposals: [
+            'Multi-site transport planning with precise timing',
+            'Coordination between chauffeurs, guests and field teams',
+            'Operational support before, during and after events',
+          ],
         },
         {
           title: 'Travel Agencies',
           description:
             'B2B partnerships for tailored itineraries and personalized follow-up.',
+          proposals: [
+            'Premium itineraries aligned with traveler profiles',
+            'Clear mission follow-up and reporting',
+            'Consistent service quality across the full journey',
+          ],
         },
       ],
       contactPhoneLabel: 'Phone',
@@ -395,6 +523,7 @@ export const dictionaries = {
         concierge: 'Консьерж',
         yachting: 'Яхтинг',
         partners: 'Партнеры',
+        reviews: 'Отзывы',
         pricing: 'Тарифы',
         contact: 'Контакты',
         booking: 'Бронирование',
@@ -459,6 +588,7 @@ export const dictionaries = {
         concierge: 'Консьерж',
         yachting: 'Яхтинг',
         partners: 'Партнеры',
+        reviews: 'Оставить отзыв',
         pricing: 'Ориентировочные тарифы',
         contact: 'Прямой контакт',
       },
@@ -515,21 +645,47 @@ export const dictionaries = {
           'Единый контакт WhatsApp для быстрых ответов и централизованного сопровождения.',
         conciergeIntro:
           'Премиальное сопровождение, чтобы упростить ваш отдых на Лазурном берегу.',
+        conciergeTapHint:
+          'Нажмите на любую опцию консьерж-сервиса, чтобы посмотреть предложения.',
+        conciergeOpenCta: 'Смотреть предложения',
+        conciergeCloseCta: 'Закрыть',
+        conciergeWhatIncludedTitle: 'Доступные предложения',
+        conciergePopupContactHint:
+          'Каждая услуга персонализируется под ваши приоритеты, сроки и предпочтения.',
+        conciergeContactCta: 'Связаться по этой опции',
+        conciergePreparedMessage:
+          'Здравствуйте, хочу организовать услугу консьерж {service}. Можете предложить индивидуальное решение?',
         conciergeItems: [
           {
-            title: 'VIP-бронирования',
+            title: 'Персональные бронирования',
             description:
-              'Рестораны, пляжные клубы, частные мероприятия и эксклюзивные впечатления.',
+              'Полное сопровождение ваших частных бронирований и индивидуальных впечатлений.',
+            proposals: [
+              'Рестораны и эксклюзивные локации',
+              'Пляжные клубы и частные мероприятия',
+              'Бронирования с учетом вашего графика',
+            ],
           },
           {
-            title: 'Индивидуальная организация',
+            title: 'Персонализированные услуги',
             description:
-              'Планирование, особые запросы и координация в реальном времени.',
+              'Частная операционная поддержка для повседневных и срочных запросов.',
+            proposals: [
+              'Доставка частных посылок',
+              'Сопровождение багажа',
+              'Поручения и личные покупки',
+              'Координация персонала',
+            ],
           },
           {
             title: 'Поддержка 7 дней в неделю',
             description:
               'Команда на связи, чтобы заранее закрывать ваши потребности.',
+            proposals: [
+              'Ежедневный контроль ваших запросов',
+              'Быстрая реакция на изменения в последний момент',
+              'Единый контакт на весь период пребывания',
+            ],
           },
         ],
         yachtingIntro:
@@ -553,21 +709,57 @@ export const dictionaries = {
         ],
         partnersIntro:
           'Мы сотрудничаем с надежными партнерами для комплексного премиального сервиса.',
+        partnerTapHint:
+          'Выберите партнера, чтобы узнать формат сотрудничества.',
+        partnerWhatIncludedTitle: 'Формат сотрудничества',
+        partnerOpenCta: 'Подробнее',
+        partnerCloseCta: 'Закрыть',
+        partnerContactCta: 'Связаться по партнерству',
+        partnerPopupContactHint:
+          'Каждое партнерство выстраивается под ваши стандарты сервиса, сроки и операционные цели.',
+        partnerPreparedMessage:
+          'Здравствуйте, хочу обсудить партнерство {partner}. Можете связаться со мной?',
+        reviewsIntro:
+          'Поделитесь опытом. Ваш отзыв сразу появится на странице.',
+        reviewsNameLabel: 'Ваше имя',
+        reviewsNamePlaceholder: 'Например: София Иванова',
+        reviewsRatingLabel: 'Ваша оценка',
+        reviewsMessageLabel: 'Ваш отзыв',
+        reviewsMessagePlaceholder:
+          'Опишите ваш опыт работы с нашим сервисом в нескольких строках...',
+        reviewsSubmitCta: 'Опубликовать отзыв',
+        reviewsEmpty:
+          'Пока нет отзывов. Станьте первым, кто поделится опытом.',
         partnersItems: [
           {
             title: 'Люксовые отели',
             description:
               'Синергия с отелями, виллами и резиденциями премиум-класса.',
+            proposals: [
+              'VIP-встречи и согласованные трансферы',
+              'Оперативная обработка запросов гостей',
+              'Выделенный контакт для персонала и консьерж-службы',
+            ],
           },
           {
             title: 'Ивент-индустрия',
             description:
               'Координация с агентствами и организаторами для VIP и персонала.',
+            proposals: [
+              'Транспортный план для нескольких площадок',
+              'Координация водителей, гостей и рабочих команд',
+              'Операционная поддержка до, во время и после события',
+            ],
           },
           {
             title: 'Туристические агентства',
             description:
               'B2B-партнерства для персонализированных маршрутов и сопровождения.',
+            proposals: [
+              'Премиальные маршруты под профиль клиента',
+              'Прозрачное сопровождение и отчетность',
+              'Стабильное качество сервиса на всей дистанции',
+            ],
           },
         ],
         contactPhoneLabel: 'Телефон',
@@ -588,6 +780,7 @@ export const dictionaries = {
         concierge: 'الكونسيرج',
         yachting: 'اليخوت',
         partners: 'الشركاء',
+        reviews: 'الآراء',
         pricing: 'الأسعار',
         contact: 'اتصل بنا',
         booking: 'الحجز',
@@ -652,6 +845,7 @@ export const dictionaries = {
         concierge: 'الكونسيرج',
         yachting: 'اليخوت',
         partners: 'الشركاء',
+        reviews: 'اترك رأيك',
         pricing: 'أسعار إرشادية',
         contact: 'تواصل مباشر',
       },
@@ -708,21 +902,47 @@ export const dictionaries = {
           'جهة اتصال واحدة عبر واتساب للحصول على رد سريع ومتابعة مركزية.',
         conciergeIntro:
           'خدمة كونسيرج فاخرة لتسهيل إقامتكم على الريفييرا الفرنسية.',
+        conciergeTapHint:
+          'يمكن النقر على كل خيار كونسيرج لعرض المقترحات.',
+        conciergeOpenCta: 'عرض المقترحات',
+        conciergeCloseCta: 'إغلاق',
+        conciergeWhatIncludedTitle: 'المقترحات المتاحة',
+        conciergePopupContactHint:
+          'يتم تخصيص كل خدمة حسب أولوياتكم والوقت المتاح وتفضيلاتكم.',
+        conciergeContactCta: 'التواصل حول هذا الخيار',
+        conciergePreparedMessage:
+          'مرحباً، أود تنظيم خدمة كونسيرج {service}. هل يمكنكم اقتراح حل مخصص؟',
         conciergeItems: [
           {
-            title: 'حجوزات كبار الشخصيات',
+            title: 'حجوزات مخصصة',
             description:
-              'مطاعم، نوادٍ شاطئية، فعاليات خاصة وتجارب حصرية.',
+              'إدارة كاملة للحجوزات الخاصة والتجارب المصممة حسب الطلب.',
+            proposals: [
+              'مطاعم وأماكن حصرية',
+              'نوادٍ شاطئية وفعاليات خاصة',
+              'حجوزات متوافقة مع جدولكم',
+            ],
           },
           {
-            title: 'تنظيم مخصص',
+            title: 'خدمات مخصصة',
             description:
-              'إدارة الجداول، الطلبات الخاصة والتنسيق الفوري.',
+              'دعم تشغيلي خاص للطلبات اليومية والعاجلة.',
+            proposals: [
+              'إرسال طرود خاصة',
+              'إدارة الأمتعة',
+              'مهمات وتسوق شخصي',
+              'تنسيق الموظفين',
+            ],
           },
           {
             title: 'دعم طوال الأسبوع',
             description:
               'فريق متاح لتوقع احتياجاتكم طوال فترة إقامتكم.',
+            proposals: [
+              'متابعة يومية للاحتياجات',
+              'استجابة سريعة للتغييرات الطارئة',
+              'جهة اتصال واحدة طوال الإقامة',
+            ],
           },
         ],
         yachtingIntro:
@@ -746,21 +966,57 @@ export const dictionaries = {
         ],
         partnersIntro:
           'نتعاون مع شركاء موثوقين لتقديم تجربة متكاملة وفاخرة.',
+        partnerTapHint:
+          'اختاروا الشريك للاطلاع على إطار التعاون.',
+        partnerWhatIncludedTitle: 'إطار التعاون',
+        partnerOpenCta: 'اعرف المزيد',
+        partnerCloseCta: 'إغلاق',
+        partnerContactCta: 'التواصل بخصوص هذه الشراكة',
+        partnerPopupContactHint:
+          'يتم تصميم كل شراكة وفق معايير الخدمة والجدول الزمني والأهداف التشغيلية الخاصة بكم.',
+        partnerPreparedMessage:
+          'مرحباً، أود مناقشة شراكة {partner}. هل يمكنكم التواصل معي؟',
+        reviewsIntro:
+          'شارك تجربتك. سيظهر رأيك مباشرة على الصفحة.',
+        reviewsNameLabel: 'الاسم',
+        reviewsNamePlaceholder: 'مثال: صوفي مارتان',
+        reviewsRatingLabel: 'التقييم',
+        reviewsMessageLabel: 'رأيك',
+        reviewsMessagePlaceholder:
+          'اكتب ملخصاً قصيراً عن تجربتك مع خدمتنا...',
+        reviewsSubmitCta: 'نشر الرأي',
+        reviewsEmpty:
+          'لا توجد آراء بعد. كن أول من يشارك تجربته.',
         partnersItems: [
           {
             title: 'الضيافة الفاخرة',
             description:
               'شراكات قوية مع الفنادق والفيلات والإقامات الراقية.',
+            proposals: [
+              'استقبال كبار الشخصيات وتنقلات منسقة',
+              'معالجة فورية لطلبات الضيوف',
+              'جهة اتصال مخصصة للفرق التشغيلية والكونسيرج',
+            ],
           },
           {
             title: 'قطاع الفعاليات',
             description:
               'تنسيق مع الوكالات والمنظمين لتنقلات كبار الشخصيات والفرق.',
+            proposals: [
+              'خطة نقل متعددة المواقع بتوقيت دقيق',
+              'تنسيق السائقين والضيوف والفرق الميدانية',
+              'دعم تشغيلي قبل الفعالية وأثناءها وبعدها',
+            ],
           },
           {
             title: 'وكالات السفر',
             description:
               'شراكات B2B لبرامج مخصصة ومتابعة شخصية للعملاء.',
+            proposals: [
+              'مسارات فاخرة وفق ملف كل مسافر',
+              'متابعة واضحة وتقارير تشغيلية',
+              'جودة خدمة متسقة طوال الرحلة',
+            ],
           },
         ],
         contactPhoneLabel: 'الهاتف',

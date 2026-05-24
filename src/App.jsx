@@ -1,11 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { BookingPage } from './pages/BookingPage'
+import { AdminPage } from './pages/AdminPage'
 import { ConciergePage } from './pages/ConciergePage'
 import { ContactPage } from './pages/ContactPage'
 import { DriversPage } from './pages/DriversPage'
 import { HomePage } from './pages/HomePage'
 import { PartnersPage } from './pages/PartnersPage'
+import { ReviewsPage } from './pages/ReviewsPage'
 import { ServicesAndPricingPage } from './pages/ServicesAndPricingPage'
 import { QuotePage } from './pages/QuotePage'
 import { VehiclesPage } from './pages/VehiclesPage'
@@ -23,6 +25,8 @@ function App() {
         <Route path="/conciergerie" element={<ConciergePage />} />
         <Route path="/yachting" element={<YachtingPage />} />
         <Route path="/partenaires" element={<PartnersPage />} />
+        <Route path="/avis" element={<ReviewsPage />} />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/reservation" element={<BookingPage />} />
         <Route path="/devis" element={<QuotePage />} />

@@ -1,11 +1,28 @@
+import { useEffect, useState } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 import { VehicleCarousel } from '../components/VehicleCarousel'
 import { vehicles } from '../data/vehicles'
+import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
+import { getStoredArray, setStoredArray, VEHICLES_STORAGE_KEY } from '../utils/adminData'
 import { MdPerson } from 'react-icons/md'
 
 export function VehiclesPage() {
   const { t, contentLanguage } = useTranslation()
+  const { isAdmin } = useAdmin()
+  const [vehicleItems, setVehicleItems] = useState(vehicles)
+
+  useEffect(() => {
+    setVehicleItems(getStoredArray(VEHICLES_STORAGE_KEY, vehicles))
+  }, [])
+
+  useEffect(() => {
+    setStoredArray(VEHICLES_STORAGE_KEY, vehicleItems)
+  }, [vehicleItems])
+
+  const handleDeleteVehicle = (vehicleId) => {
+    setVehicleItems((current) => current.filter((vehicle) => vehicle.id !== vehicleId))
+  }
 
   return (
     <section className="panel">
@@ -15,7 +32,7 @@ export function VehiclesPage() {
       />
 
       <div className="card-grid vehicle-grid">
-        {vehicles.map((vehicle) => (
+        {vehicleItems.map((vehicle) => (
           <article key={vehicle.id} className="card vehicle-card">
             <div className="vehicle-card-media">
               <VehicleCarousel
@@ -41,6 +58,16 @@ export function VehiclesPage() {
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
+
+              {isAdmin ? (
+                <button
+                  type="button"
+                  className="admin-action-button"
+                  onClick={() => handleDeleteVehicle(vehicle.id)}
+                >
+                  Supprimer ce véhicule
+                </button>
+              ) : null}
             </div>
           </article>
         ))}

@@ -4,12 +4,24 @@ import { ServiceIcon } from '../components/ServiceIcon'
 import { VehicleCarousel } from '../components/VehicleCarousel'
 import { excursions } from '../data/excursions'
 import { services } from '../data/services'
+import { useAdmin } from '../hooks/useAdmin'
 import { useTranslation } from '../hooks/useTranslation'
+import { EXCURSIONS_STORAGE_KEY, getStoredArray, setStoredArray } from '../utils/adminData'
 import { createWhatsAppUrl } from '../utils/whatsapp'
 
 export function ServicesAndPricingPage() {
   const { t, language, contentLanguage } = useTranslation()
+  const { isAdmin } = useAdmin()
+  const [excursionItems, setExcursionItems] = useState(excursions)
   const [selectedExcursion, setSelectedExcursion] = useState(null)
+
+  useEffect(() => {
+    setExcursionItems(getStoredArray(EXCURSIONS_STORAGE_KEY, excursions))
+  }, [])
+
+  useEffect(() => {
+    setStoredArray(EXCURSIONS_STORAGE_KEY, excursionItems)
+  }, [excursionItems])
 
   useEffect(() => {
     if (!selectedExcursion) {
@@ -45,6 +57,11 @@ export function ServicesAndPricingPage() {
     }
 
     return `Hello, I would like to organize the ${excursionName} excursion. Could you suggest a program and a quote?`
+  }
+
+  const handleDeleteExcursion = (excursionId) => {
+    setExcursionItems((current) => current.filter((excursion) => excursion.id !== excursionId))
+    setSelectedExcursion((current) => (current?.id === excursionId ? null : current))
   }
 
   return (
@@ -130,7 +147,7 @@ export function ServicesAndPricingPage() {
           <p className="excursions-tap-hint">{t.pages.excursionsTapHint}</p>
 
           <div className="card-grid excursions-grid">
-            {excursions.map((excursion) => (
+            {excursionItems.map((excursion) => (
               <article key={excursion.id} className="card excursion-card">
                 <VehicleCarousel
                   title={excursion.name[contentLanguage]}
@@ -150,6 +167,16 @@ export function ServicesAndPricingPage() {
                 >
                   {t.pages.excursionOpenCta}
                 </button>
+
+                {isAdmin ? (
+                  <button
+                    type="button"
+                    className="admin-action-button"
+                    onClick={() => handleDeleteExcursion(excursion.id)}
+                  >
+                    Supprimer cette excursion
+                  </button>
+                ) : null}
               </article>
             ))}
           </div>
