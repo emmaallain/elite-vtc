@@ -13,10 +13,20 @@ const unitLabelByLanguage = {
     hour: 'per hour',
     day: 'per day',
   },
+  ru: {
+    trip: 'за поездку',
+    hour: 'в час',
+    day: 'в день',
+  },
+  ar: {
+    trip: 'لكل رحلة',
+    hour: 'لكل ساعة',
+    day: 'لكل يوم',
+  },
 }
 
 export function PricingPage() {
-  const { t, language } = useTranslation()
+  const { t, language, contentLanguage } = useTranslation()
 
   return (
     <section className="panel">
@@ -30,12 +40,12 @@ export function PricingPage() {
         {pricing.map((item) => (
           <article key={item.id} className="card pricing-card">
             <div>
-              <h3>{item.title[language]}</h3>
-              <p>{item.note[language]}</p>
+              <h3>{item.title[contentLanguage]}</h3>
+              <p>{item.note[contentLanguage]}</p>
             </div>
             <div className="price-box">
               <p className="price-value">{item.amount}</p>
-              <p className="price-unit">{unitLabelByLanguage[language][item.unit]}</p>
+              <p className="price-unit">{(unitLabelByLanguage[language] ?? unitLabelByLanguage.en)[item.unit]}</p>
             </div>
           </article>
         ))}

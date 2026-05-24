@@ -36,6 +36,32 @@ const chatContent = {
     open: 'Open chat',
     close: 'Close chat',
   },
+  ru: {
+    title: 'Робот-помощник Elite VTC',
+    subtitle: 'Быстрый ответ',
+    message: 'Здравствуйте, нужна помощь с бронированием или расчетом?',
+    hint: 'Свяжитесь с нами по любому вопросу или для расчета стоимости.',
+    closeHint: 'Закрыть это сообщение',
+    call: 'Позвонить',
+    email: 'Email',
+    quote: 'Расчет',
+    whatsapp: 'WhatsApp',
+    open: 'Открыть чат',
+    close: 'Закрыть чат',
+  },
+  ar: {
+    title: 'مساعد Elite VTC الآلي',
+    subtitle: 'رد سريع',
+    message: 'مرحبًا، هل تحتاج مساعدة في الحجز أو طلب عرض سعر؟',
+    hint: 'لا تتردد في التواصل معنا لأي طلب أو عرض سعر.',
+    closeHint: 'إغلاق هذه الرسالة',
+    call: 'اتصال',
+    email: 'البريد الإلكتروني',
+    quote: 'عرض سعر',
+    whatsapp: 'واتساب',
+    open: 'فتح الدردشة',
+    close: 'إغلاق الدردشة',
+  },
 }
 
 export function FloatingChatbot() {
@@ -43,7 +69,7 @@ export function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [isHintDismissed, setIsHintDismissed] = useState(false)
   const [animateHintOnLoad, setAnimateHintOnLoad] = useState(false)
-  const text = chatContent[language]
+  const text = chatContent[language] ?? chatContent.en
 
   const phoneHref = `tel:${SITE_CONFIG.phone.replace(/\s+/g, '')}`
   const emailHref = `mailto:${SITE_CONFIG.email}`

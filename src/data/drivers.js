@@ -19,13 +19,20 @@ const christellePhoto = getMediaSource(christelleImageSource, {
 export const drivers = [
   {
     id: 'driver-1',
-    name: { fr: 'Yannick ALLAIN', en: 'Yannick ALLAIN' },
-    experience: { fr: '12 ans d expérience', en: '12 years of experience' },
+    name: { fr: 'Yannick ALLAIN', en: 'Yannick ALLAIN', ru: 'Yannick ALLAIN', ar: 'Yannick ALLAIN' },
+    experience: { fr: '12 ans d expérience', en: '12 years of experience', ru: '12 лет опыта', ar: '12 سنة خبرة' },
     specialty: {
       fr: 'Transferts aéroport & clientèle affaires',
       en: 'Airport transfers & business clients',
+      ru: 'Трансферы в аэропорт и бизнес-клиенты',
+      ar: 'نقل من وإلى المطار وخدمة عملاء الأعمال',
     },
-    languages: { fr: ['Français', 'English'], en: ['French', 'English'] },
+    languages: {
+      fr: ['Français', 'English'],
+      en: ['French', 'English'],
+      ru: ['Французский', 'Английский'],
+      ar: ['الفرنسية', 'الإنجليزية'],
+    },
     availability: true,
     phone: '+33 6 19 52 49 99',
     photo: yannickPhoto.src,
@@ -33,13 +40,20 @@ export const drivers = [
   },
   {
     id: 'driver-2',
-    name: { fr: 'Christelle ALLAIN', en: 'Christelle ALLAIN' },
-    experience: { fr: '9 ans d expérience', en: '9 years of experience' },
+    name: { fr: 'Christelle ALLAIN', en: 'Christelle ALLAIN', ru: 'Christelle ALLAIN', ar: 'Christelle ALLAIN' },
+    experience: { fr: '9 ans d expérience', en: '9 years of experience', ru: '9 лет опыта', ar: '9 سنوات خبرة' },
     specialty: {
       fr: 'Mise à disposition événementielle & VIP',
       en: 'Event-based and VIP chauffeur service',
+      ru: 'Сопровождение мероприятий и VIP-сервис',
+      ar: 'خدمة مرافقة الفعاليات وVIP',
     },
-    languages: { fr: ['Français', 'English', 'Allemand'], en: ['French', 'English', 'German'] },
+    languages: {
+      fr: ['Français', 'English', 'Allemand'],
+      en: ['French', 'English', 'German'],
+      ru: ['Французский', 'Английский', 'Немецкий'],
+      ar: ['الفرنسية', 'الإنجليزية', 'الألمانية'],
+    },
     availability: true,
     phone: '+33 6 09 20 10 91',
     photo: christellePhoto.src,

@@ -24,6 +24,26 @@ export function LanguageSwitcher() {
       >
         <span aria-hidden="true" className="lang-flag">🇬🇧</span>
       </button>
+
+      <button
+        type="button"
+        className={`lang-option ${language === 'ru' ? 'lang-option-active' : ''}`}
+        onClick={() => setLanguage('ru')}
+        aria-label="Русский"
+        title="Русский"
+      >
+        <span aria-hidden="true" className="lang-flag">🇷🇺</span>
+      </button>
+
+      <button
+        type="button"
+        className={`lang-option ${language === 'ar' ? 'lang-option-active' : ''}`}
+        onClick={() => setLanguage('ar')}
+        aria-label="العربية"
+        title="العربية"
+      >
+        <span aria-hidden="true" className="lang-flag">🇸🇦</span>
+      </button>
     </div>
   )
 }

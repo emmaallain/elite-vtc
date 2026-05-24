@@ -32,7 +32,7 @@ export function ContactPage() {
         <article className="contact-item">
           <div className="contact-item-header">
             <PhoneIcon />
-            <h3>Téléphone</h3>
+            <h3>{t.pages.contactPhoneLabel}</h3>
           </div>
           <p>{SITE_CONFIG.phone}</p>
         </article>
@@ -40,7 +40,7 @@ export function ContactPage() {
         <article className="contact-item">
           <div className="contact-item-header">
             <EmailIcon />
-            <h3>Email</h3>
+            <h3>{t.pages.contactEmailLabel}</h3>
           </div>
           <p>{SITE_CONFIG.email}</p>
         </article>
@@ -48,7 +48,7 @@ export function ContactPage() {
         <article className="contact-item">
           <div className="contact-item-header">
             <LocationIcon />
-            <h3>Zone d'intervention</h3>
+            <h3>{t.pages.contactServiceAreaLabel}</h3>
           </div>
           <p>{SITE_CONFIG.serviceArea}</p>
         </article>
@@ -56,15 +56,14 @@ export function ContactPage() {
 
       <div className="contact-cta">
         <a className="cta cta-secondary contact-quick-link" href={phoneHref}>
-          Appeler
+          {t.pages.contactCallCta}
         </a>
         <a className="cta cta-primary whatsapp-cta" href={createWhatsAppUrl()} target="_blank" rel="noreferrer">
           {t.common.whatsappNow}
         </a>
         <a className="cta cta-secondary contact-quick-link" href={emailHref}>
-          Envoyer un email
+          {t.pages.contactEmailCta}
         </a>
-        
       </div>
     </section>
   )

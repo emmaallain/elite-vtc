@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { MdGroups, MdLanguage, MdSchedule, MdStar, MdPublic } from 'react-icons/md'
 import { ImageWithLoader } from '../components/ImageWithLoader'
 import { SectionHeading } from '../components/SectionHeading'
+import { SITE_CONFIG } from '../config/siteConfig'
 import { useTranslation } from '../hooks/useTranslation'
 import { getMediaSource } from '../utils/media'
 
@@ -16,6 +17,9 @@ const trustIconByKey = {
 
 export function HomePage() {
   const { t, language } = useTranslation()
+  const temporaryAlert = SITE_CONFIG.temporaryHomeAlert
+  const alertStorageKey = 'elite-vtc-temporary-alert-dismissed'
+  const [isAlertPopupOpen, setIsAlertPopupOpen] = useState(false)
   const stats = t.trust.stats
   const animationKey = 'elite-vtc-trust-stats-animated'
   const rawCarouselFolder = import.meta.env.VITE_HOMEPAGE_CAROUSEL_FOLDER
@@ -99,6 +103,42 @@ export function HomePage() {
   const [currentBanner, setCurrentBanner] = useState(0)
   const canGoPrevBanner = currentBanner > 0
   const canGoNextBanner = currentBanner < bannerSlides.length - 1
+  const alertMessage = language === 'fr'
+    ? temporaryAlert?.fr
+    : language === 'ru'
+      ? temporaryAlert?.ru ?? temporaryAlert?.en
+      : language === 'ar'
+        ? temporaryAlert?.ar ?? temporaryAlert?.en
+        : temporaryAlert?.en
+  const alertLabel = language === 'fr'
+    ? 'Flash spécial'
+    : language === 'ru'
+      ? 'Срочное уведомление'
+      : language === 'ar'
+        ? 'تنبيه عاجل'
+        : 'Special alert'
+  const alertCloseLabel = language === 'fr'
+    ? 'Fermer l’alerte'
+    : language === 'ru'
+      ? 'Закрыть уведомление'
+      : language === 'ar'
+        ? 'إغلاق التنبيه'
+        : 'Close alert'
+
+  useEffect(() => {
+    if (!temporaryAlert?.enabled) {
+      setIsAlertPopupOpen(false)
+      return
+    }
+
+    const wasDismissed = window.localStorage.getItem(alertStorageKey) === 'true'
+    setIsAlertPopupOpen(!wasDismissed)
+  }, [alertStorageKey, temporaryAlert?.enabled])
+
+  const handleCloseAlertPopup = () => {
+    window.localStorage.setItem(alertStorageKey, 'true')
+    setIsAlertPopupOpen(false)
+  }
 
   useEffect(() => {
     setCurrentBanner(0)
@@ -147,6 +187,23 @@ export function HomePage() {
 
   return (
     <>
+      {temporaryAlert?.enabled && isAlertPopupOpen ? (
+        <div className="home-alert-overlay" role="presentation">
+          <section className="home-alert-popup" role="alertdialog" aria-live="assertive" aria-label={alertLabel}>
+            <p className="home-alert-popup-label">{alertLabel}</p>
+            <p className="home-alert-popup-message">{alertMessage}</p>
+            <button
+              type="button"
+              className="home-alert-popup-close"
+              onClick={handleCloseAlertPopup}
+              aria-label={alertCloseLabel}
+            >
+              OK
+            </button>
+          </section>
+        </div>
+      ) : null}
+
       <section className="hero-panel">
         <h2 className="hero-title">{t.hero.title}</h2>
         <p className="hero-subtitle">{t.hero.subtitle}</p>

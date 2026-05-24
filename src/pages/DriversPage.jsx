@@ -4,7 +4,7 @@ import { drivers } from '../data/drivers'
 import { useTranslation } from '../hooks/useTranslation'
 
 export function DriversPage() {
-  const { t, language } = useTranslation()
+  const { t, language, contentLanguage } = useTranslation()
 
   return (
     <section className="panel">
@@ -20,16 +20,16 @@ export function DriversPage() {
               <ImageWithLoader
                 src={driver.photo}
                 fallbackSrc={driver.photoFallback}
-                alt={driver.name[language]}
+                alt={driver.name[contentLanguage]}
                 className="portrait-image"
                 wrapperClassName="portrait-image-shell"
               />
             </div>
             <div className="driver-card-content">
-              <h3>{driver.name[language]}</h3>
-              <p>{driver.experience[language]}</p>
-              <p>{driver.specialty[language]}</p>
-              <p>{driver.languages[language].join(' • ')}</p>
+              <h3>{driver.name[contentLanguage]}</h3>
+              <p>{driver.experience[contentLanguage]}</p>
+              <p>{driver.specialty[contentLanguage]}</p>
+              <p>{driver.languages[contentLanguage].join(' • ')}</p>
               <p className="driver-phone">{driver.phone}</p>
               <p className={driver.availability ? 'badge badge-available' : 'badge badge-unavailable'}>
                 <span className="badge-dot"></span>

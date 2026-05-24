@@ -6,7 +6,7 @@ import { services } from '../data/services'
 import { useTranslation } from '../hooks/useTranslation'
 
 export function ServicesPage() {
-  const { t, language } = useTranslation()
+  const { t, contentLanguage } = useTranslation()
 
   return (
     <section className="panel">
@@ -21,9 +21,9 @@ export function ServicesPage() {
           <article key={service.id} className="card">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <ServiceIcon type={service.icon} />
-              <h3>{service.title[language]}</h3>
+              <h3>{service.title[contentLanguage]}</h3>
             </div>
-            <p>{service.description[language]}</p>
+            <p>{service.description[contentLanguage]}</p>
           </article>
         ))}
       </div>
@@ -36,17 +36,17 @@ export function ServicesPage() {
           {excursions.map((excursion) => (
             <article key={excursion.id} className="card excursion-card">
               <VehicleCarousel
-                title={excursion.name[language]}
+                title={excursion.name[contentLanguage]}
                 gallery={excursion.gallery}
-                language={language}
+                language={contentLanguage}
               />
               <div className="excursion-copy">
-                <h4>{excursion.name[language]}</h4>
-                <p>{excursion.summary[language]}</p>
+                <h4>{excursion.name[contentLanguage]}</h4>
+                <p>{excursion.summary[contentLanguage]}</p>
               </div>
               <div className="price-box excursion-price-box">
-                <p className="price-value">{excursion.priceEstimate[language]}</p>
-                <p className="price-unit">{excursion.priceContext[language]}</p>
+                <p className="price-value">{excursion.priceEstimate[contentLanguage]}</p>
+                <p className="price-unit">{excursion.priceContext?.[contentLanguage] ?? ''}</p>
               </div>
             </article>
           ))}

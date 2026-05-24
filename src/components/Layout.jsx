@@ -1,4 +1,5 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { SITE_CONFIG } from '../config/siteConfig'
 import { useTranslation } from '../hooks/useTranslation'
 import { LanguageSwitcher } from './LanguageSwitcher'
@@ -16,9 +17,14 @@ const navPaths = {
 }
 
 export function Layout() {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const { pathname } = useLocation()
   const isHomePage = pathname === '/'
+
+  useEffect(() => {
+    document.documentElement.lang = language
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
+  }, [language])
 
   return (
     <>

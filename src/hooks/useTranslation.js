@@ -9,10 +9,15 @@ export function useTranslation() {
     throw new Error('useTranslation must be used within LanguageProvider')
   }
 
-  const dict = dictionaries[context.language]
+  const dict = dictionaries[context.language] ?? dictionaries.en
+  const supportedContentLanguages = ['fr', 'en', 'ru', 'ar']
+  const contentLanguage = supportedContentLanguages.includes(context.language)
+    ? context.language
+    : 'en'
 
   return {
     language: context.language,
+    contentLanguage,
     setLanguage: context.setLanguage,
     toggleLanguage: context.toggleLanguage,
     t: dict,
