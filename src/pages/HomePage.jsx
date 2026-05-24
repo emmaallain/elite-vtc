@@ -106,7 +106,7 @@ export function HomePage() {
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setCurrentBanner((current) => (current >= bannerSlides.length - 1 ? current : current + 1))
+      setCurrentBanner((current) => (current + 1) % bannerSlides.length)
     }, 4800)
 
     return () => window.clearInterval(intervalId)
