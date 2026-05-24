@@ -117,6 +117,73 @@ main {
   gap: 0.45rem;
 }
 
+.cta,
+.theme-switcher,
+.lang-option,
+.whatsapp-chip,
+.whatsapp-floating,
+.carousel-button,
+.chatbot-launcher,
+.chatbot-action {
+  transition: transform 170ms ease, box-shadow 170ms ease, background 170ms ease, border-color 170ms ease;
+}
+
+.cta,
+.theme-switcher,
+.whatsapp-chip,
+.whatsapp-floating,
+.carousel-button,
+.chatbot-launcher,
+.chatbot-action {
+  box-shadow: 0 7px 16px rgba(45, 32, 22, 0.13);
+}
+
+.cta:hover,
+.theme-switcher:hover,
+.lang-option:hover,
+.whatsapp-chip:hover,
+.whatsapp-floating:hover,
+.carousel-button:hover,
+.chatbot-launcher:hover,
+.chatbot-action:hover {
+  transform: translateY(-1px);
+}
+
+.cta:hover,
+.theme-switcher:hover,
+.whatsapp-chip:hover,
+.whatsapp-floating:hover,
+.carousel-button:hover,
+.chatbot-launcher:hover,
+.chatbot-action:hover {
+  box-shadow: 0 10px 22px rgba(45, 32, 22, 0.18);
+}
+
+.cta:active,
+.theme-switcher:active,
+.lang-option:active,
+.whatsapp-chip:active,
+.whatsapp-floating:active,
+.carousel-button:active,
+.chatbot-launcher:active,
+.chatbot-action:active {
+  transform: translateY(0);
+}
+
+.cta:focus-visible,
+.theme-switcher:focus-visible,
+.lang-option:focus-visible,
+.whatsapp-chip:focus-visible,
+.whatsapp-floating:focus-visible,
+.carousel-button:focus-visible,
+.chatbot-launcher:focus-visible,
+.chatbot-action:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--copper-soft) 34%, transparent),
+    0 10px 22px rgba(45, 32, 22, 0.18);
+}
+
 .switcher-icon {
   width: 1rem;
   height: 1rem;
@@ -218,18 +285,6 @@ main {
   pointer-events: none;
 }
 
-.home-banner-button {
-  pointer-events: auto;
-  border: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
-  border-radius: 999px;
-  width: 2.2rem;
-  height: 2.2rem;
-  background: color-mix(in srgb, var(--surface) 78%, transparent);
-  color: var(--text-main);
-  font-weight: 700;
-  cursor: pointer;
-}
-
 .home-banner-dots {
   position: absolute;
   left: 50%;
@@ -259,11 +314,13 @@ main {
   border-radius: 999px;
   padding: 0.62rem 1.1rem;
   font-weight: 600;
+  border: 1px solid transparent;
 }
 
 .cta-primary {
   color: #1c1a18;
   background: linear-gradient(120deg, var(--copper-soft), var(--copper));
+  border-color: color-mix(in srgb, var(--copper) 58%, transparent);
 }
 
 .whatsapp-cta {
@@ -276,6 +333,7 @@ main {
 .cta-secondary {
   border: 1px solid var(--line);
   color: var(--text-main);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--text-main) 10%, transparent));
 }
 
 .panel {
@@ -493,6 +551,17 @@ main {
   padding: 0.85rem;
   max-width: 300px;
   justify-self: center;
+}
+
+.vehicle-card-media {
+  width: 100%;
+}
+
+.vehicle-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
 }
 
 .driver-card {
@@ -1296,7 +1365,7 @@ main {
   }
 
   .vehicle-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 0.6rem;
   }
 
@@ -1304,6 +1373,35 @@ main {
     max-width: none;
     width: 100%;
     padding: 0.65rem;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .vehicle-card-media {
+    width: 112px;
+    min-width: 112px;
+  }
+
+  .vehicle-card-media .vehicle-carousel {
+    margin-top: 0;
+  }
+
+  .vehicle-card-media .vehicle-image-shell {
+    aspect-ratio: 1 / 1;
+  }
+
+  .vehicle-card-content {
+    gap: 0.35rem;
+  }
+
+  .vehicle-card-header {
+    gap: 0.45rem;
+  }
+
+  .capacity-badge {
+    padding: 0.28rem 0.5rem;
+    font-size: 0.78rem;
   }
 
   .card.vehicle-card h3 {
@@ -1312,6 +1410,7 @@ main {
 
   .feature-list {
     font-size: 0.82rem;
+    margin-top: 0;
   }
 
   .trust-stats {

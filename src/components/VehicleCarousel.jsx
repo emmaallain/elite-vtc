@@ -1,8 +1,41 @@
-import { useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ImageWithLoader } from './ImageWithLoader'
 
 export function VehicleCarousel({ title, gallery, language }) {
   const trackRef = useRef(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(gallery.length > 1)
+
+  const updateScrollState = useCallback(() => {
+    const track = trackRef.current
+
+    if (!track) {
+      return
+    }
+
+    const maxScrollLeft = Math.max(track.scrollWidth - track.clientWidth, 0)
+    const epsilon = 2
+
+    setCanScrollLeft(track.scrollLeft > epsilon)
+    setCanScrollRight(track.scrollLeft < maxScrollLeft - epsilon)
+  }, [])
+
+  useEffect(() => {
+    const track = trackRef.current
+
+    if (!track) {
+      return undefined
+    }
+
+    updateScrollState()
+    track.addEventListener('scroll', updateScrollState, { passive: true })
+    window.addEventListener('resize', updateScrollState)
+
+    return () => {
+      track.removeEventListener('scroll', updateScrollState)
+      window.removeEventListener('resize', updateScrollState)
+    }
+  }, [gallery.length, updateScrollState])
 
   const scrollBySlide = (direction) => {
     const track = trackRef.current
@@ -31,14 +64,37 @@ export function VehicleCarousel({ title, gallery, language }) {
           </figure>
         ))}
       </div>
-      <div className="vehicle-carousel-topbar">
-        <button type="button" className="carousel-button carousel-button-left" onClick={() => scrollBySlide(-1)}>
-          ←
-        </button>
-        <button type="button" className="carousel-button carousel-button-right" onClick={() => scrollBySlide(1)}>
-          →
-        </button>
-      </div>
+      {(canScrollLeft || canScrollRight) && (
+        <div
+          className="vehicle-carousel-topbar"
+          style={{
+            justifyContent: canScrollLeft && canScrollRight
+              ? 'space-between'
+              : canScrollRight
+                ? 'flex-end'
+                : 'flex-start',
+          }}
+        >
+          {canScrollLeft ? (
+            <button
+              type="button"
+              className="carousel-button carousel-button-left"
+              onClick={() => scrollBySlide(-1)}
+            >
+              ←
+            </button>
+          ) : null}
+          {canScrollRight ? (
+            <button
+              type="button"
+              className="carousel-button carousel-button-right"
+              onClick={() => scrollBySlide(1)}
+            >
+              →
+            </button>
+          ) : null}
+        </div>
+      )}
     </div>
   )
 }

@@ -88,6 +88,8 @@ export function HomePage() {
 
   const [counterValues, setCounterValues] = useState(initialValues)
   const [currentBanner, setCurrentBanner] = useState(0)
+  const canGoPrevBanner = currentBanner > 0
+  const canGoNextBanner = currentBanner < bannerSlides.length - 1
 
   useEffect(() => {
     setCurrentBanner(0)
@@ -95,7 +97,7 @@ export function HomePage() {
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setCurrentBanner((current) => (current + 1) % bannerSlides.length)
+      setCurrentBanner((current) => (current >= bannerSlides.length - 1 ? current : current + 1))
     }, 4800)
 
     return () => window.clearInterval(intervalId)
@@ -151,29 +153,39 @@ export function HomePage() {
             decoding="async"
           />
 
-          <div className="home-banner-controls" aria-label="Banner controls">
-            <button
-              type="button"
-              className="home-banner-button"
-              onClick={() =>
-                setCurrentBanner((current) =>
-                  current === 0 ? bannerSlides.length - 1 : current - 1,
-                )
-              }
-              aria-label={language === 'fr' ? 'Image precedente' : 'Previous image'}
-            >
-              {'<'}
-            </button>
-            <button
-              type="button"
-              className="home-banner-button"
-              onClick={() =>
-                setCurrentBanner((current) => (current + 1) % bannerSlides.length)
-              }
-              aria-label={language === 'fr' ? 'Image suivante' : 'Next image'}
-            >
-              {'>'}
-            </button>
+          <div
+            className="home-banner-controls"
+            aria-label="Banner controls"
+            style={{
+              justifyContent: canGoPrevBanner && canGoNextBanner
+                ? 'space-between'
+                : canGoNextBanner
+                  ? 'flex-end'
+                  : 'flex-start',
+            }}
+          >
+            {canGoPrevBanner ? (
+              <button
+                type="button"
+                className="home-banner-button carousel-button"
+                onClick={() => setCurrentBanner((current) => Math.max(current - 1, 0))}
+                aria-label={language === 'fr' ? 'Image precedente' : 'Previous image'}
+              >
+                ←
+              </button>
+            ) : null}
+            {canGoNextBanner ? (
+              <button
+                type="button"
+                className="home-banner-button carousel-button"
+                onClick={() =>
+                  setCurrentBanner((current) => Math.min(current + 1, bannerSlides.length - 1))
+                }
+                aria-label={language === 'fr' ? 'Image suivante' : 'Next image'}
+              >
+                →
+              </button>
+            ) : null}
           </div>
 
           <div className="home-banner-dots" aria-hidden="true">
