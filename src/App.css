@@ -184,6 +184,44 @@ main {
     0 10px 22px rgba(45, 32, 22, 0.18);
 }
 
+:root[data-theme='dark'] .cta,
+:root[data-theme='dark'] .theme-switcher,
+:root[data-theme='dark'] .whatsapp-chip,
+:root[data-theme='dark'] .whatsapp-floating,
+:root[data-theme='dark'] .carousel-button,
+:root[data-theme='dark'] .chatbot-launcher,
+:root[data-theme='dark'] .chatbot-action {
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.46),
+    0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme='dark'] .cta:hover,
+:root[data-theme='dark'] .theme-switcher:hover,
+:root[data-theme='dark'] .whatsapp-chip:hover,
+:root[data-theme='dark'] .whatsapp-floating:hover,
+:root[data-theme='dark'] .carousel-button:hover,
+:root[data-theme='dark'] .chatbot-launcher:hover,
+:root[data-theme='dark'] .chatbot-action:hover {
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.58),
+    0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+:root[data-theme='dark'] .cta:focus-visible,
+:root[data-theme='dark'] .theme-switcher:focus-visible,
+:root[data-theme='dark'] .lang-option:focus-visible,
+:root[data-theme='dark'] .whatsapp-chip:focus-visible,
+:root[data-theme='dark'] .whatsapp-floating:focus-visible,
+:root[data-theme='dark'] .carousel-button:focus-visible,
+:root[data-theme='dark'] .chatbot-launcher:focus-visible,
+:root[data-theme='dark'] .chatbot-action:focus-visible {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--copper-soft) 34%, transparent),
+    0 16px 30px rgba(0, 0, 0, 0.58),
+    0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
 .switcher-icon {
   width: 1rem;
   height: 1rem;
@@ -198,6 +236,12 @@ main {
   background: var(--whatsapp-bg);
   color: var(--whatsapp-text);
   box-shadow: 0 10px 24px rgba(21, 157, 93, 0.16);
+}
+
+:root[data-theme='dark'] .whatsapp-chip {
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.52),
+    0 0 0 1px rgba(31, 208, 124, 0.26);
 }
 
 .whatsapp-chip:hover,
