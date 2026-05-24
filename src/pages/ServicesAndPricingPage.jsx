@@ -1,15 +1,108 @@
+import { useEffect, useState } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 import { ServiceIcon } from '../components/ServiceIcon'
 import { VehicleCarousel } from '../components/VehicleCarousel'
 import { excursions } from '../data/excursions'
 import { services } from '../data/services'
 import { useTranslation } from '../hooks/useTranslation'
+import { createWhatsAppUrl } from '../utils/whatsapp'
 
 export function ServicesAndPricingPage() {
-  const { t, contentLanguage } = useTranslation()
+  const { t, language, contentLanguage } = useTranslation()
+  const [selectedExcursion, setSelectedExcursion] = useState(null)
+
+  useEffect(() => {
+    if (!selectedExcursion) {
+      return undefined
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedExcursion(null)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [selectedExcursion])
+
+  const getExcursionWhatsappMessage = (excursionName) => {
+    const template = t.pages.excursionPreparedMessage
+    if (typeof template === 'string' && template.includes('{excursion}')) {
+      return template.replace('{excursion}', excursionName)
+    }
+
+    if (language === 'fr') {
+      return `Bonjour, je souhaite organiser l'excursion ${excursionName}. Pouvez-vous me proposer un programme et un devis ?`
+    }
+
+    if (language === 'ru') {
+      return `Здравствуйте, хочу организовать экскурсию ${excursionName}. Можете предложить программу и расчет стоимости?`
+    }
+
+    if (language === 'ar') {
+      return `مرحباً، أود تنظيم رحلة ${excursionName}. هل يمكنكم اقتراح برنامج وتقدير سعر؟`
+    }
+
+    return `Hello, I would like to organize the ${excursionName} excursion. Could you suggest a program and a quote?`
+  }
 
   return (
     <>
+      {selectedExcursion ? (
+        <div
+          className="excursion-dialog-overlay"
+          role="presentation"
+          onClick={() => setSelectedExcursion(null)}
+        >
+          <section
+            className="excursion-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="excursion-dialog-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <h3 id="excursion-dialog-title">{selectedExcursion.name[contentLanguage]}</h3>
+
+            <VehicleCarousel
+              title={selectedExcursion.name[contentLanguage]}
+              gallery={selectedExcursion.gallery}
+              language={contentLanguage}
+            />
+
+            <p className="excursion-dialog-summary">{selectedExcursion.summary[contentLanguage]}</p>
+
+            <h4>{t.pages.excursionWhatYouCanDoTitle}</h4>
+            <ul className="excursion-dialog-list">
+              {t.pages.excursionWhatYouCanDoItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+
+            <p className="excursion-dialog-note">{t.pages.excursionPopupContactHint}</p>
+
+            <div className="excursion-dialog-actions">
+              <a
+                className="cta cta-primary excursion-contact-button"
+                href={createWhatsAppUrl(getExcursionWhatsappMessage(selectedExcursion.name[contentLanguage]))}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t.pages.excursionContactCta}
+              </a>
+
+              <button
+                type="button"
+                className="cta cta-secondary excursion-dialog-close"
+                onClick={() => setSelectedExcursion(null)}
+              >
+                {t.pages.excursionCloseCta}
+              </button>
+            </div>
+          </section>
+        </div>
+      ) : null}
+
       {/* Services Section */}
       <section className="panel">
         <SectionHeading
@@ -34,6 +127,7 @@ export function ServicesAndPricingPage() {
         <div className="excursions-section">
           <h3>{t.pages.excursionsTitle}</h3>
           <p>{t.pages.excursionsIntro}</p>
+          <p className="excursions-tap-hint">{t.pages.excursionsTapHint}</p>
 
           <div className="card-grid excursions-grid">
             {excursions.map((excursion) => (
@@ -48,6 +142,14 @@ export function ServicesAndPricingPage() {
                   <h4>{excursion.name[contentLanguage]}</h4>
                   <p>{excursion.summary[contentLanguage]}</p>
                 </div>
+
+                <button
+                  type="button"
+                  className="cta cta-secondary excursion-open-button"
+                  onClick={() => setSelectedExcursion(excursion)}
+                >
+                  {t.pages.excursionOpenCta}
+                </button>
               </article>
             ))}
           </div>

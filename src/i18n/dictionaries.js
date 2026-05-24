@@ -110,6 +110,21 @@ export const dictionaries = {
         'Ces prix sont indicatifs. Un tarif final est confirmé selon distance, horaire et conditions de circulation.',
       servicesQuoteOnlyNote:
         'Tarifs communiqués uniquement sur devis ou après contact avec nos chauffeurs.',
+      excursionsTapHint:
+        'Chaque excursion est cliquable pour voir les détails.',
+      excursionOpenCta: 'Voir les détails',
+      excursionCloseCta: 'Fermer',
+      excursionWhatYouCanDoTitle: 'Ce que vous pouvez faire',
+      excursionWhatYouCanDoItems: [
+        'Adapter le rythme selon vos envies',
+        'Prévoir des arrêts photo et panoramas',
+        'Organiser du temps libre pour visites ou shopping',
+      ],
+      excursionPopupContactHint:
+        'Programme final, durée et itinéraire personnalisés après échange avec votre chauffeur.',
+      excursionContactCta: 'Contacter pour cette excursion',
+      excursionPreparedMessage:
+        'Bonjour, je souhaite organiser l\'excursion {excursion}. Pouvez-vous me proposer un programme et un devis ?',
       contactIntro:
         'Un seul contact WhatsApp pour des réponses rapides et un suivi centralisé.',
       conciergeIntro:
@@ -288,6 +303,21 @@ export const dictionaries = {
         'These prices are indicative. Final pricing depends on distance, schedule and traffic conditions.',
       servicesQuoteOnlyNote:
         'Pricing is provided only by quote or after direct contact with our chauffeurs.',
+      excursionsTapHint:
+        'Each excursion is clickable to view full details.',
+      excursionOpenCta: 'View details',
+      excursionCloseCta: 'Close',
+      excursionWhatYouCanDoTitle: 'What you can do',
+      excursionWhatYouCanDoItems: [
+        'Adjust the pace to your preferences',
+        'Plan scenic and photo stops',
+        'Include free time for visits or shopping',
+      ],
+      excursionPopupContactHint:
+        'Final program, duration and route are tailored after discussing with your chauffeur.',
+      excursionContactCta: 'Contact about this excursion',
+      excursionPreparedMessage:
+        'Hello, I would like to organize the {excursion} excursion. Could you suggest a program and a quote?',
       contactIntro:
         'A single WhatsApp contact for fast responses and centralized follow-up.',
       conciergeIntro:
@@ -466,6 +496,21 @@ export const dictionaries = {
           'Цены ориентировочные. Итоговая стоимость зависит от расстояния, времени и дорожной ситуации.',
         servicesQuoteOnlyNote:
           'Стоимость предоставляется только по запросу или после прямого контакта с нашими водителями.',
+        excursionsTapHint:
+          'Каждая экскурсия кликабельна: откройте, чтобы посмотреть детали.',
+        excursionOpenCta: 'Подробнее',
+        excursionCloseCta: 'Закрыть',
+        excursionWhatYouCanDoTitle: 'Что можно включить',
+        excursionWhatYouCanDoItems: [
+          'Настроить темп под ваши пожелания',
+          'Запланировать фото- и панорамные остановки',
+          'Добавить свободное время для прогулок или шопинга',
+        ],
+        excursionPopupContactHint:
+          'Финальная программа, длительность и маршрут персонализируются после общения с водителем.',
+        excursionContactCta: 'Связаться по этой экскурсии',
+        excursionPreparedMessage:
+          'Здравствуйте, хочу организовать экскурсию {excursion}. Можете предложить программу и расчет стоимости?',
         contactIntro:
           'Единый контакт WhatsApp для быстрых ответов и централизованного сопровождения.',
         conciergeIntro:
@@ -644,6 +689,21 @@ export const dictionaries = {
           'الأسعار المعروضة إرشادية. السعر النهائي يعتمد على المسافة والوقت وحالة المرور.',
         servicesQuoteOnlyNote:
           'يتم تقديم الأسعار فقط عبر طلب عرض سعر أو بعد التواصل المباشر مع سائقينا.',
+        excursionsTapHint:
+          'كل رحلة قابلة للنقر لعرض التفاصيل الكاملة.',
+        excursionOpenCta: 'عرض التفاصيل',
+        excursionCloseCta: 'إغلاق',
+        excursionWhatYouCanDoTitle: 'ما الذي يمكنكم القيام به',
+        excursionWhatYouCanDoItems: [
+          'تعديل وتيرة الرحلة حسب رغبتكم',
+          'إضافة محطات تصوير وإطلالات بانورامية',
+          'تخصيص وقت حر للزيارة أو التسوق',
+        ],
+        excursionPopupContactHint:
+          'يتم تخصيص البرنامج النهائي والمدة والمسار بعد التواصل مع سائقكم.',
+        excursionContactCta: 'التواصل حول هذه الرحلة',
+        excursionPreparedMessage:
+          'مرحباً، أود تنظيم رحلة {excursion}. هل يمكنكم اقتراح برنامج وتقدير سعر؟',
         contactIntro:
           'جهة اتصال واحدة عبر واتساب للحصول على رد سريع ومتابعة مركزية.',
         conciergeIntro:
