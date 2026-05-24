@@ -2114,9 +2114,48 @@ main {
 }
 
 @media (max-width: 560px) {
+  .header-top {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .brand-block {
+    min-width: 0;
+  }
+
+  .brand-name {
+    font-size: clamp(1.9rem, 9vw, 2.25rem);
+    line-height: 0.92;
+  }
+
+  .brand-name-trigger {
+    display: inline-block;
+    max-width: 100%;
+  }
+
   .header-tools {
+    width: 100%;
     gap: 0.45rem;
     align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .admin-chip-group {
+    width: 100%;
+    order: -1;
+    justify-content: space-between;
+    gap: 0.45rem;
+  }
+
+  .admin-email-chip {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .admin-pill {
+    flex: 0 0 auto;
   }
 
   .lang-switcher-desktop {
