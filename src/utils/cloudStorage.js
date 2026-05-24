@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL?.trim()
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim()
 const TABLE_NAME = 'elite_app_state'
+const SUPABASE_SINGLETON_KEY = '__eliteVtcSupabaseClient__'
 
 function isValidHttpUrl(value) {
   if (!value) {
@@ -36,10 +37,24 @@ function getNormalizedHttpOrigin(value) {
 
 const normalizedSupabaseUrl = getNormalizedHttpOrigin(SUPABASE_URL)
 
-const supabase =
-  isValidHttpUrl(SUPABASE_URL) && normalizedSupabaseUrl && SUPABASE_ANON_KEY
-    ? createClient(normalizedSupabaseUrl, SUPABASE_ANON_KEY)
-    : null
+function getOrCreateSupabaseClient() {
+  if (!(isValidHttpUrl(SUPABASE_URL) && normalizedSupabaseUrl && SUPABASE_ANON_KEY)) {
+    return null
+  }
+
+  const globalScope = globalThis
+  const existingClient = globalScope[SUPABASE_SINGLETON_KEY]
+
+  if (existingClient) {
+    return existingClient
+  }
+
+  const client = createClient(normalizedSupabaseUrl, SUPABASE_ANON_KEY)
+  globalScope[SUPABASE_SINGLETON_KEY] = client
+  return client
+}
+
+const supabase = getOrCreateSupabaseClient()
 
 export function getSupabaseClient() {
   return supabase
