@@ -1,9 +1,18 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useMemo, useState } from 'react'
+import { MdGroups, MdLanguage, MdSchedule, MdStar, MdPublic } from 'react-icons/md'
 import { ImageWithLoader } from '../components/ImageWithLoader'
 import { SectionHeading } from '../components/SectionHeading'
 import { useTranslation } from '../hooks/useTranslation'
 import { getMediaSource } from '../utils/media'
+
+const trustIconByKey = {
+  group: MdGroups,
+  public: MdPublic,
+  schedule: MdSchedule,
+  star: MdStar,
+  translate: MdLanguage,
+}
 
 export function HomePage() {
   const { t, language } = useTranslation()
@@ -211,19 +220,25 @@ export function HomePage() {
       <section className="panel trust-panel">
         <SectionHeading title={t.trust.title} />
         <ul className="trust-list trust-stats" aria-label={t.trust.title}>
-          {stats.map((stat) => (
-            <li key={stat.id} className="trust-stat-card">
-              <p className="trust-stat-value">
-                {stat.prefix || ''}
-                {counterValues[stat.id] ?? 0}
-                {stat.suffix || ''}
-              </p>
-              <p className="trust-stat-label">
-                <span className="trust-stat-emoji" aria-hidden="true">{stat.emoji || '•'}</span>
-                {stat.label}
-              </p>
-            </li>
-          ))}
+          {stats.map((stat) => {
+            const TrustIcon = trustIconByKey[stat.icon]
+
+            return (
+              <li key={stat.id} className="trust-stat-card">
+                <p className="trust-stat-value">
+                  {stat.prefix || ''}
+                  {counterValues[stat.id] ?? 0}
+                  {stat.suffix || ''}
+                </p>
+                <p className="trust-stat-label">
+                  <span className={`trust-stat-emoji trust-stat-emoji-${stat.id}`} aria-hidden="true">
+                    {TrustIcon ? <TrustIcon focusable="false" /> : '•'}
+                  </span>
+                  {stat.label}
+                </p>
+              </li>
+            )
+          })}
         </ul>
       </section>
     </>

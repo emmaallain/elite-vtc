@@ -2,55 +2,18 @@ import { SITE_CONFIG } from '../config/siteConfig'
 import { SectionHeading } from '../components/SectionHeading'
 import { createWhatsAppUrl } from '../utils/whatsapp'
 import { useTranslation } from '../hooks/useTranslation'
+import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 
 function PhoneIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="contact-icon">
-      <path
-        d="M3.5 5.2c0-.8.7-1.5 1.5-1.5h2.1c.6 0 1.2.4 1.4 1l1.5 5.1c.2.6 0 1.3-.5 1.6l-1.5 1.2c.7 1.8 2.2 3.3 4 4l1.2-1.5c.4-.5 1-.6 1.6-.5l5.1 1.5c.6.2 1 .8 1 1.4v2.1c0 .8-.7 1.5-1.5 1.5-6.6 0-12-5.4-12-12 0-.8.7-1.5 1.5-1.5Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
+  return <MdPhone aria-hidden="true" className="contact-icon" focusable="false" />
 }
 
 function EmailIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="contact-icon">
-      <path
-        d="M3.5 5.5h17c.8 0 1.5.7 1.5 1.5v12c0 .8-.7 1.5-1.5 1.5h-17c-.8 0-1.5-.7-1.5-1.5v-12c0-.8.7-1.5 1.5-1.5Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="m21 7-9 5.25L3 7"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
+  return <MdEmail aria-hidden="true" className="contact-icon" focusable="false" />
 }
 
 function LocationIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="contact-icon">
-      <path
-        d="M12 2c-4.4 0-8 3.1-8 7 0 2.5 1.2 4.8 3 6.3 1.7 1.5 3.5 2.7 5 4.2 1.5-1.5 3.3-2.7 5-4.2 1.8-1.5 3-3.8 3-6.3 0-3.9-3.6-7-8-7Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="9" r="1.5" fill="currentColor" />
-    </svg>
-  )
+  return <MdLocationOn aria-hidden="true" className="contact-icon" focusable="false" />
 }
 
 export function ContactPage() {
