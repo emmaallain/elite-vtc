@@ -87,6 +87,7 @@ export const dictionaries = {
         'Cette fonctionnalite sera activee dans une prochaine version.',
       requestQuote: 'Demander un devis',
       requestBooking: 'Demarrer une reservation',
+      onRequest: 'Sur devis',
     },
     pages: {
       servicesEyebrow: 'Mobilite sur mesure',
@@ -96,6 +97,9 @@ export const dictionaries = {
         'Une flotte selectionnee pour le confort, l elegance et la securite de vos deplacements.',
       servicesIntro:
         'Des prestations pensees pour les particuliers exigeants et les professionnels qui attendent un service sans compromis.',
+      excursionsTitle: 'Excursions Possibles',
+      excursionsIntro:
+        'Destinations populaires pour une journee ou demi-journee avec chauffeur prive. Prix indicatifs calcules depuis Cannes (et d autres destinations sont possibles selon vos envies: Italie, Espagne, Marseille, etc.).',
       pricingIntro:
         'Ces prix sont indicatifs. Un tarif final est confirme selon distance, horaire et conditions de circulation.',
       contactIntro:
@@ -191,6 +195,7 @@ export const dictionaries = {
       futureFeature: 'This feature will be enabled in a future release.',
       requestQuote: 'Request a quote',
       requestBooking: 'Start booking',
+      onRequest: 'On request',
     },
     pages: {
       servicesEyebrow: 'Tailored Mobility',
@@ -200,6 +205,9 @@ export const dictionaries = {
         'A carefully selected fleet focused on comfort, elegance and safety.',
       servicesIntro:
         'Services designed for demanding private clients and professionals who expect excellence.',
+      excursionsTitle: 'Available Excursions',
+      excursionsIntro:
+        'Popular destinations for half-day or full-day private chauffeur trips. Indicative prices are calculated from Cannes (other destinations are also possible depending on your wishes: Italy, Spain, Marseille, etc.).',
       pricingIntro:
         'These prices are indicative. Final pricing depends on distance, schedule and traffic conditions.',
       contactIntro:

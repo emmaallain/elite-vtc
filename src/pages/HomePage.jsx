@@ -139,59 +139,60 @@ export function HomePage() {
       <section className="hero-panel">
         <h2 className="hero-title">{t.hero.title}</h2>
         <p className="hero-subtitle">{t.hero.subtitle}</p>
+
+        <section className="home-banner-panel" aria-label="Homepage visual banner">
+          <ImageWithLoader
+            src={bannerSlides[currentBanner].src}
+            fallbackSrc={bannerSlides[currentBanner].fallbackSrc}
+            alt={bannerSlides[currentBanner].alt}
+            className="home-banner-image"
+            wrapperClassName="home-banner-image-shell"
+            loading="eager"
+            decoding="async"
+          />
+
+          <div className="home-banner-controls" aria-label="Banner controls">
+            <button
+              type="button"
+              className="home-banner-button"
+              onClick={() =>
+                setCurrentBanner((current) =>
+                  current === 0 ? bannerSlides.length - 1 : current - 1,
+                )
+              }
+              aria-label={language === 'fr' ? 'Image precedente' : 'Previous image'}
+            >
+              {'<'}
+            </button>
+            <button
+              type="button"
+              className="home-banner-button"
+              onClick={() =>
+                setCurrentBanner((current) => (current + 1) % bannerSlides.length)
+              }
+              aria-label={language === 'fr' ? 'Image suivante' : 'Next image'}
+            >
+              {'>'}
+            </button>
+          </div>
+
+          <div className="home-banner-dots" aria-hidden="true">
+            {bannerSlides.map((slide, index) => (
+              <button
+                key={slide.id}
+                type="button"
+                className={`home-banner-dot ${index === currentBanner ? 'home-banner-dot-active' : ''}`}
+                onClick={() => setCurrentBanner(index)}
+                aria-label={language === 'fr' ? `Aller a l image ${index + 1}` : `Go to image ${index + 1}`}
+              />
+            ))}
+          </div>
+        </section>
+
         <div className="hero-actions">
           <Link className="cta cta-secondary" to="/services">
             {t.hero.ctaSecondary} <span aria-hidden="true">→</span>
           </Link>
-        </div>
-      </section>
-
-      <section className="home-banner-panel" aria-label="Homepage visual banner">
-        <ImageWithLoader
-          src={bannerSlides[currentBanner].src}
-          fallbackSrc={bannerSlides[currentBanner].fallbackSrc}
-          alt={bannerSlides[currentBanner].alt}
-          className="home-banner-image"
-          wrapperClassName="home-banner-image-shell"
-          loading="eager"
-          decoding="async"
-        />
-
-        <div className="home-banner-controls" aria-label="Banner controls">
-          <button
-            type="button"
-            className="home-banner-button"
-            onClick={() =>
-              setCurrentBanner((current) =>
-                current === 0 ? bannerSlides.length - 1 : current - 1,
-              )
-            }
-            aria-label={language === 'fr' ? 'Image precedente' : 'Previous image'}
-          >
-            {'<'}
-          </button>
-          <button
-            type="button"
-            className="home-banner-button"
-            onClick={() =>
-              setCurrentBanner((current) => (current + 1) % bannerSlides.length)
-            }
-            aria-label={language === 'fr' ? 'Image suivante' : 'Next image'}
-          >
-            {'>'}
-          </button>
-        </div>
-
-        <div className="home-banner-dots" aria-hidden="true">
-          {bannerSlides.map((slide, index) => (
-            <button
-              key={slide.id}
-              type="button"
-              className={`home-banner-dot ${index === currentBanner ? 'home-banner-dot-active' : ''}`}
-              onClick={() => setCurrentBanner(index)}
-              aria-label={language === 'fr' ? `Aller a l image ${index + 1}` : `Go to image ${index + 1}`}
-            />
-          ))}
         </div>
       </section>
 
