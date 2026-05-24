@@ -67,14 +67,21 @@ main {
 }
 
 .lang-switcher {
-  background: var(--button-bg);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.2rem;
-  height: 2.4rem;
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+}
+
+.lang-switcher-desktop {
+  background: var(--button-bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.26rem;
+  height: 2.4rem;
+}
+
+.lang-switcher-mobile {
+  display: none;
 }
 
 .lang-option {
@@ -103,6 +110,35 @@ main {
   line-height: 1;
 }
 
+.lang-globe {
+  position: relative;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: var(--button-bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.lang-globe-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-main);
+  pointer-events: none;
+}
+
+.lang-globe-select {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  border: none;
+  cursor: pointer;
+}
+
 .theme-switcher {
   background: var(--button-bg);
   color: var(--text-main);
@@ -119,6 +155,7 @@ main {
 
 .cta,
 .theme-switcher,
+.lang-globe,
 .lang-option,
 .whatsapp-chip,
 .whatsapp-floating,
@@ -130,6 +167,7 @@ main {
 
 .cta,
 .theme-switcher,
+.lang-globe,
 .whatsapp-chip,
 .whatsapp-floating,
 .carousel-button,
@@ -140,6 +178,7 @@ main {
 
 .cta:hover,
 .theme-switcher:hover,
+.lang-globe:hover,
 .lang-option:hover,
 .whatsapp-chip:hover,
 .whatsapp-floating:hover,
@@ -151,6 +190,7 @@ main {
 
 .cta:hover,
 .theme-switcher:hover,
+.lang-globe:hover,
 .whatsapp-chip:hover,
 .whatsapp-floating:hover,
 .carousel-button:hover,
@@ -161,6 +201,7 @@ main {
 
 .cta:active,
 .theme-switcher:active,
+.lang-globe:active,
 .lang-option:active,
 .whatsapp-chip:active,
 .whatsapp-floating:active,
@@ -172,6 +213,7 @@ main {
 
 .cta:focus-visible,
 .theme-switcher:focus-visible,
+.lang-globe:focus-visible,
 .lang-option:focus-visible,
 .whatsapp-chip:focus-visible,
 .whatsapp-floating:focus-visible,
@@ -186,6 +228,7 @@ main {
 
 :root[data-theme='dark'] .cta,
 :root[data-theme='dark'] .theme-switcher,
+:root[data-theme='dark'] .lang-globe,
 :root[data-theme='dark'] .whatsapp-chip,
 :root[data-theme='dark'] .whatsapp-floating,
 :root[data-theme='dark'] .carousel-button,
@@ -198,6 +241,7 @@ main {
 
 :root[data-theme='dark'] .cta:hover,
 :root[data-theme='dark'] .theme-switcher:hover,
+:root[data-theme='dark'] .lang-globe:hover,
 :root[data-theme='dark'] .whatsapp-chip:hover,
 :root[data-theme='dark'] .whatsapp-floating:hover,
 :root[data-theme='dark'] .carousel-button:hover,
@@ -210,6 +254,7 @@ main {
 
 :root[data-theme='dark'] .cta:focus-visible,
 :root[data-theme='dark'] .theme-switcher:focus-visible,
+:root[data-theme='dark'] .lang-globe:focus-visible,
 :root[data-theme='dark'] .lang-option:focus-visible,
 :root[data-theme='dark'] .whatsapp-chip:focus-visible,
 :root[data-theme='dark'] .whatsapp-floating:focus-visible,
@@ -220,6 +265,10 @@ main {
     0 0 0 3px color-mix(in srgb, var(--copper-soft) 34%, transparent),
     0 16px 30px rgba(0, 0, 0, 0.58),
     0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+:root[data-theme='dark'] .lang-globe {
+  border-color: color-mix(in srgb, var(--line) 62%, transparent);
 }
 
 .switcher-icon {
@@ -1582,6 +1631,46 @@ main {
 }
 
 @media (max-width: 560px) {
+  .header-tools {
+    gap: 0.45rem;
+    align-items: center;
+  }
+
+  .lang-switcher-desktop {
+    display: none;
+  }
+
+  .lang-switcher-mobile {
+    display: inline-flex;
+  }
+
+  .lang-globe {
+    width: 1.72rem;
+    height: 1.72rem;
+  }
+
+  .lang-globe-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .theme-switcher {
+    width: 2.12rem;
+    height: 2.12rem;
+    padding: 0;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .theme-switcher span {
+    display: none;
+  }
+
+  .switcher-icon {
+    width: 1.02rem;
+    height: 1.02rem;
+  }
+
   .driver-grid {
     grid-template-columns: 1fr;
     gap: 0.6rem;
