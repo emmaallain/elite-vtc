@@ -6,13 +6,16 @@ import { LanguageSwitcher } from './LanguageSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { FloatingChatbot } from './FloatingChatbot'
 
-const navKeys = ['home', 'drivers', 'vehicles', 'services', 'contact']
+const navKeys = ['home', 'drivers', 'vehicles', 'services', 'concierge', 'yachting', 'partners', 'contact']
 
 const navPaths = {
   home: '/',
   drivers: '/chauffeurs',
   vehicles: '/vehicules',
   services: '/services',
+  concierge: '/conciergerie',
+  yachting: '/yachting',
+  partners: '/partenaires',
   contact: '/contact',
 }
 

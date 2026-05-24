@@ -5,6 +5,9 @@ export const dictionaries = {
       drivers: 'Chauffeurs',
       vehicles: 'Véhicules',
       services: 'Services',
+      concierge: 'Conciergerie',
+      yachting: 'Yachting',
+      partners: 'Partenaires',
       pricing: 'Tarifs',
       contact: 'Contact',
       booking: 'Réservation',
@@ -66,6 +69,9 @@ export const dictionaries = {
       drivers: 'Nos Chauffeurs',
       vehicles: 'Collection Prestige',
       services: 'Nos Services',
+      concierge: 'Conciergerie',
+      yachting: 'Yachting',
+      partners: 'Partenaires',
       pricing: 'Tarifs Indicatifs',
       contact: 'Contact Direct',
     },
@@ -102,8 +108,67 @@ export const dictionaries = {
         'Destinations populaires pour une journée ou demi-journée avec chauffeur privé. Prix indicatifs calculés depuis Cannes (et d’autres destinations sont possibles selon vos envies: Italie, Espagne, Marseille, etc.).',
       pricingIntro:
         'Ces prix sont indicatifs. Un tarif final est confirmé selon distance, horaire et conditions de circulation.',
+      servicesQuoteOnlyNote:
+        'Tarifs communiqués uniquement sur devis ou après contact avec nos chauffeurs.',
       contactIntro:
         'Un seul contact WhatsApp pour des réponses rapides et un suivi centralisé.',
+      conciergeIntro:
+        'Un accompagnement premium pour simplifier votre séjour sur la Côte d’Azur.',
+      conciergeItems: [
+        {
+          title: 'Réservations VIP',
+          description:
+            'Restaurants, beach clubs, événements privés et expériences exclusives.',
+        },
+        {
+          title: 'Organisation sur mesure',
+          description:
+            'Gestion de planning, demandes spéciales et coordination en temps réel.',
+        },
+        {
+          title: 'Assistance 7j/7',
+          description:
+            'Une équipe disponible pour anticiper vos besoins pendant tout votre séjour.',
+        },
+      ],
+      yachtingIntro:
+        'Des prestations yachting haut de gamme, du transfert au service à bord.',
+      yachtingItems: [
+        {
+          title: 'Transferts vers les marinas',
+          description:
+            'Trajets privés vers Cannes, Antibes, Monaco, Saint-Tropez et ports voisins.',
+        },
+        {
+          title: 'Accueil équipage & invités',
+          description:
+            'Prise en charge discrète des capitaines, équipages, propriétaires et invités.',
+        },
+        {
+          title: 'Logistique dédiée',
+          description:
+            'Coordination des courses, bagages et déplacements liés aux opérations du yacht.',
+        },
+      ],
+      partnersIntro:
+        'Nous collaborons avec des partenaires de confiance pour offrir une expérience complète.',
+      partnersItems: [
+        {
+          title: 'Hôtellerie de luxe',
+          description:
+            'Synergies avec hôtels, villas et résidences premium pour un service fluide.',
+        },
+        {
+          title: 'Événementiel',
+          description:
+            'Coordination avec agences et organisateurs pour déplacements VIP et staff.',
+        },
+        {
+          title: 'Agences de voyage',
+          description:
+            'Partenariats B2B pour itinéraires sur mesure et suivi personnalisé des clients.',
+        },
+      ],
       contactPhoneLabel: 'Téléphone',
       contactEmailLabel: 'Email',
       contactServiceAreaLabel: "Zone d'intervention",
@@ -119,6 +184,9 @@ export const dictionaries = {
       drivers: 'Drivers',
       vehicles: 'Vehicles',
       services: 'Services',
+      concierge: 'Concierge',
+      yachting: 'Yachting',
+      partners: 'Partners',
       pricing: 'Pricing',
       contact: 'Contact',
       booking: 'Booking',
@@ -180,6 +248,9 @@ export const dictionaries = {
       drivers: 'Our Drivers',
       vehicles: 'Signature Collection',
       services: 'Our Services',
+      concierge: 'Concierge',
+      yachting: 'Yachting',
+      partners: 'Partners',
       pricing: 'Indicative Pricing',
       contact: 'Direct Contact',
     },
@@ -215,8 +286,67 @@ export const dictionaries = {
         'Popular destinations for half-day or full-day private chauffeur trips. Indicative prices are calculated from Cannes (other destinations are also possible depending on your wishes: Italy, Spain, Marseille, etc.).',
       pricingIntro:
         'These prices are indicative. Final pricing depends on distance, schedule and traffic conditions.',
+      servicesQuoteOnlyNote:
+        'Pricing is provided only by quote or after direct contact with our chauffeurs.',
       contactIntro:
         'A single WhatsApp contact for fast responses and centralized follow-up.',
+      conciergeIntro:
+        'Premium assistance to simplify your stay on the French Riviera.',
+      conciergeItems: [
+        {
+          title: 'VIP Bookings',
+          description:
+            'Restaurants, beach clubs, private events and exclusive experiences.',
+        },
+        {
+          title: 'Tailored Planning',
+          description:
+            'Schedule management, special requests and real-time coordination.',
+        },
+        {
+          title: '7-Day Support',
+          description:
+            'A dedicated team available to anticipate your needs throughout your stay.',
+        },
+      ],
+      yachtingIntro:
+        'High-end yachting services, from transfers to onboard support.',
+      yachtingItems: [
+        {
+          title: 'Marina Transfers',
+          description:
+            'Private rides to Cannes, Antibes, Monaco, Saint-Tropez and nearby ports.',
+        },
+        {
+          title: 'Crew & Guest Welcome',
+          description:
+            'Discreet handling for captains, crews, owners and guests.',
+        },
+        {
+          title: 'Dedicated Logistics',
+          description:
+            'Coordination of shopping, luggage and transport linked to yacht operations.',
+        },
+      ],
+      partnersIntro:
+        'We work with trusted partners to deliver a complete premium experience.',
+      partnersItems: [
+        {
+          title: 'Luxury Hospitality',
+          description:
+            'Strong collaboration with hotels, villas and premium residences.',
+        },
+        {
+          title: 'Events Industry',
+          description:
+            'Coordination with agencies and planners for VIP and staff transport.',
+        },
+        {
+          title: 'Travel Agencies',
+          description:
+            'B2B partnerships for tailored itineraries and personalized follow-up.',
+        },
+      ],
       contactPhoneLabel: 'Phone',
       contactEmailLabel: 'Email',
       contactServiceAreaLabel: 'Service area',
@@ -232,6 +362,9 @@ export const dictionaries = {
         drivers: 'Водители',
         vehicles: 'Автомобили',
         services: 'Услуги',
+        concierge: 'Консьерж',
+        yachting: 'Яхтинг',
+        partners: 'Партнеры',
         pricing: 'Тарифы',
         contact: 'Контакты',
         booking: 'Бронирование',
@@ -293,6 +426,9 @@ export const dictionaries = {
         drivers: 'Наши водители',
         vehicles: 'Премиальная коллекция',
         services: 'Наши услуги',
+        concierge: 'Консьерж',
+        yachting: 'Яхтинг',
+        partners: 'Партнеры',
         pricing: 'Ориентировочные тарифы',
         contact: 'Прямой контакт',
       },
@@ -328,8 +464,67 @@ export const dictionaries = {
           'Популярные направления на полдня или целый день с частным водителем. Ориентировочные цены рассчитаны от Канн (возможны и другие направления: Италия, Испания, Марсель и т.д.).',
         pricingIntro:
           'Цены ориентировочные. Итоговая стоимость зависит от расстояния, времени и дорожной ситуации.',
+        servicesQuoteOnlyNote:
+          'Стоимость предоставляется только по запросу или после прямого контакта с нашими водителями.',
         contactIntro:
           'Единый контакт WhatsApp для быстрых ответов и централизованного сопровождения.',
+        conciergeIntro:
+          'Премиальное сопровождение, чтобы упростить ваш отдых на Лазурном берегу.',
+        conciergeItems: [
+          {
+            title: 'VIP-бронирования',
+            description:
+              'Рестораны, пляжные клубы, частные мероприятия и эксклюзивные впечатления.',
+          },
+          {
+            title: 'Индивидуальная организация',
+            description:
+              'Планирование, особые запросы и координация в реальном времени.',
+          },
+          {
+            title: 'Поддержка 7 дней в неделю',
+            description:
+              'Команда на связи, чтобы заранее закрывать ваши потребности.',
+          },
+        ],
+        yachtingIntro:
+          'Премиальные яхтенные услуги: от трансферов до поддержки на борту.',
+        yachtingItems: [
+          {
+            title: 'Трансферы в марины',
+            description:
+              'Частные поездки в Канны, Антиб, Монако, Сен-Тропе и соседние порты.',
+          },
+          {
+            title: 'Встреча экипажа и гостей',
+            description:
+              'Деликатное сопровождение капитанов, экипажа, владельцев и гостей.',
+          },
+          {
+            title: 'Специальная логистика',
+            description:
+              'Координация закупок, багажа и перемещений, связанных с яхтой.',
+          },
+        ],
+        partnersIntro:
+          'Мы сотрудничаем с надежными партнерами для комплексного премиального сервиса.',
+        partnersItems: [
+          {
+            title: 'Люксовые отели',
+            description:
+              'Синергия с отелями, виллами и резиденциями премиум-класса.',
+          },
+          {
+            title: 'Ивент-индустрия',
+            description:
+              'Координация с агентствами и организаторами для VIP и персонала.',
+          },
+          {
+            title: 'Туристические агентства',
+            description:
+              'B2B-партнерства для персонализированных маршрутов и сопровождения.',
+          },
+        ],
         contactPhoneLabel: 'Телефон',
         contactEmailLabel: 'Электронная почта',
         contactServiceAreaLabel: 'Зона обслуживания',
@@ -345,6 +540,9 @@ export const dictionaries = {
         drivers: 'السائقون',
         vehicles: 'المركبات',
         services: 'الخدمات',
+        concierge: 'الكونسيرج',
+        yachting: 'اليخوت',
+        partners: 'الشركاء',
         pricing: 'الأسعار',
         contact: 'اتصل بنا',
         booking: 'الحجز',
@@ -406,6 +604,9 @@ export const dictionaries = {
         drivers: 'سائقونا',
         vehicles: 'المجموعة الفاخرة',
         services: 'خدماتنا',
+        concierge: 'الكونسيرج',
+        yachting: 'اليخوت',
+        partners: 'الشركاء',
         pricing: 'أسعار إرشادية',
         contact: 'تواصل مباشر',
       },
@@ -441,8 +642,67 @@ export const dictionaries = {
           'وجهات شائعة لنصف يوم أو يوم كامل مع سائق خاص. الأسعار إرشادية انطلاقاً من كان (ويمكن أيضاً اختيار وجهات أخرى مثل إيطاليا وإسبانيا ومرسيليا وغيرها).',
         pricingIntro:
           'الأسعار المعروضة إرشادية. السعر النهائي يعتمد على المسافة والوقت وحالة المرور.',
+        servicesQuoteOnlyNote:
+          'يتم تقديم الأسعار فقط عبر طلب عرض سعر أو بعد التواصل المباشر مع سائقينا.',
         contactIntro:
           'جهة اتصال واحدة عبر واتساب للحصول على رد سريع ومتابعة مركزية.',
+        conciergeIntro:
+          'خدمة كونسيرج فاخرة لتسهيل إقامتكم على الريفييرا الفرنسية.',
+        conciergeItems: [
+          {
+            title: 'حجوزات كبار الشخصيات',
+            description:
+              'مطاعم، نوادٍ شاطئية، فعاليات خاصة وتجارب حصرية.',
+          },
+          {
+            title: 'تنظيم مخصص',
+            description:
+              'إدارة الجداول، الطلبات الخاصة والتنسيق الفوري.',
+          },
+          {
+            title: 'دعم طوال الأسبوع',
+            description:
+              'فريق متاح لتوقع احتياجاتكم طوال فترة إقامتكم.',
+          },
+        ],
+        yachtingIntro:
+          'خدمات يخوت راقية من التنقلات إلى الدعم على متن اليخت.',
+        yachtingItems: [
+          {
+            title: 'تنقلات إلى المرافئ',
+            description:
+              'رحلات خاصة إلى كان، أنتيب، موناكو، سان تروبيه والمرافئ القريبة.',
+          },
+          {
+            title: 'استقبال الطاقم والضيوف',
+            description:
+              'خدمة دقيقة وسرية للقباطنة والطاقم والمالكين والضيوف.',
+          },
+          {
+            title: 'لوجستيات مخصصة',
+            description:
+              'تنسيق المشتريات، الأمتعة والتنقلات المرتبطة بعمليات اليخت.',
+          },
+        ],
+        partnersIntro:
+          'نتعاون مع شركاء موثوقين لتقديم تجربة متكاملة وفاخرة.',
+        partnersItems: [
+          {
+            title: 'الضيافة الفاخرة',
+            description:
+              'شراكات قوية مع الفنادق والفيلات والإقامات الراقية.',
+          },
+          {
+            title: 'قطاع الفعاليات',
+            description:
+              'تنسيق مع الوكالات والمنظمين لتنقلات كبار الشخصيات والفرق.',
+          },
+          {
+            title: 'وكالات السفر',
+            description:
+              'شراكات B2B لبرامج مخصصة ومتابعة شخصية للعملاء.',
+          },
+        ],
         contactPhoneLabel: 'الهاتف',
         contactEmailLabel: 'البريد الإلكتروني',
         contactServiceAreaLabel: 'منطقة الخدمة',
