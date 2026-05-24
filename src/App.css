@@ -1548,6 +1548,17 @@ main {
   .vehicle-card-media .vehicle-carousel {
     margin-top: 0;
   }
+ 
+  .vehicle-card-media .vehicle-carousel-topbar {
+    padding-inline: 0.12rem;
+  }
+
+  .vehicle-card-media .carousel-button {
+    width: 1.38rem;
+    height: 1.38rem;
+    font-size: 0.72rem;
+    line-height: 1;
+  }
 
   .vehicle-card-media .vehicle-image-shell {
     aspect-ratio: 1 / 1;
@@ -1609,8 +1620,8 @@ main {
 
 @media (max-width: 390px) {
   .trust-stats {
-    grid-template-columns: 1fr;
-    gap: 0.55rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
   }
 
   .trust-stat-card {
